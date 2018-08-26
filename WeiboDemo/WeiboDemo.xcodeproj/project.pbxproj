@@ -21,6 +21,7 @@
 		AAD9F2EC21327D5D000F2E6C /* WBDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2EB21327D5D000F2E6C /* WBDiscoverViewController.swift */; };
 		AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2ED21327D68000F2E6C /* WBProfileViewController.swift */; };
 		AAD9F2F021327ED5000F2E6C /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2EF21327ED5000F2E6C /* Bundle+Extension.swift */; };
+		AAD9F2F421329C35000F2E6C /* WBDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		AAD9F2EB21327D5D000F2E6C /* WBDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDiscoverViewController.swift; sourceTree = "<group>"; };
 		AAD9F2ED21327D68000F2E6C /* WBProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBProfileViewController.swift; sourceTree = "<group>"; };
 		AAD9F2EF21327ED5000F2E6C /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDemoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		AAD9F2DC21327B70000F2E6C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AAD9F2F221329BF0000F2E6C /* Test */,
 				AAD9F2E121327CA5000F2E6C /* WBMainViewController.swift */,
 				AAD9F2E321327CD5000F2E6C /* WBNavigationController.swift */,
 				AAD9F2E521327D02000F2E6C /* WBBaseViewController.swift */,
@@ -224,6 +227,14 @@
 				AAD9F2ED21327D68000F2E6C /* WBProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		AAD9F2F221329BF0000F2E6C /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +371,7 @@
 			files = (
 				AAD9F2EC21327D5D000F2E6C /* WBDiscoverViewController.swift in Sources */,
 				AAD9F2F021327ED5000F2E6C /* Bundle+Extension.swift in Sources */,
+				AAD9F2F421329C35000F2E6C /* WBDemoViewController.swift in Sources */,
 				AAD9F2E421327CD5000F2E6C /* WBNavigationController.swift in Sources */,
 				AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */,
 				AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */,
