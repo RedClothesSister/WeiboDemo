@@ -37,7 +37,7 @@ class WBBaseViewController: UIViewController {
 
 extension WBBaseViewController {
     
-    //设置界面
+    // 设置界面
     @objc func setupUI() {
         view.backgroundColor = UIColor.magenta
         
@@ -46,5 +46,8 @@ extension WBBaseViewController {
         
         // 将item设置给Bar
         navigationBar.items = [navigationItemTitle]
+        
+        // 设置navigationBar的渲染颜色
+        navigationBar.barTintColor = UIColor.barTintColor
     }
 }

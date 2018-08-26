@@ -10,4 +10,6 @@ import UIKit
 
 extension UIColor {
     static let themeColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+    
+    static let barTintColor = UIColor(red: 246/255, green: 246/255, blue: 246/255, alpha: 1)
 }
