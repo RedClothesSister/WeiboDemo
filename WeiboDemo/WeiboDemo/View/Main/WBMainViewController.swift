@@ -12,24 +12,45 @@ class WBMainViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupChildController()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+}
+
+extension WBMainViewController {
+    
+    //设置所有的子控制器
+    private func setupChildController() {
+        let array = [
+            ["clsName": "WBHomeViewController", "title": "首页", "imageName": ""]
+        ]
+        
+        var arrayModel = [UIViewController]()
+        for dict in array {
+            arrayModel.append(controller(dict: dict))
+        }
+        
+        viewControllers = arrayModel
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    private func controller(dict: [String: String]) -> UIViewController {
+        
+        //1.取得字典内容
+        guard let clsName = dict["clsName"],
+              let title = dict["title"],
+              let imageName = dict["imageName"],
+              let cls = NSClassFromString(Bundle.main.nameSpace + "." + clsName) as? UIViewController.Type else {
+                return UIViewController()
+        }
+        
+        //2.创建视图控制器
+        let vc = cls.init()
+        vc.title = title
+        
+        let nav = WBNavigationController(rootViewController: vc)
+        return nav
     }
-    */
-
 }
