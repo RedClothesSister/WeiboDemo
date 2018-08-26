@@ -20,6 +20,7 @@
 		AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2E921327D46000F2E6C /* WBMessageViewController.swift */; };
 		AAD9F2EC21327D5D000F2E6C /* WBDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2EB21327D5D000F2E6C /* WBDiscoverViewController.swift */; };
 		AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2ED21327D68000F2E6C /* WBProfileViewController.swift */; };
+		AAD9F2F021327ED5000F2E6C /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2EF21327ED5000F2E6C /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		AAD9F2E921327D46000F2E6C /* WBMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBMessageViewController.swift; sourceTree = "<group>"; };
 		AAD9F2EB21327D5D000F2E6C /* WBDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDiscoverViewController.swift; sourceTree = "<group>"; };
 		AAD9F2ED21327D68000F2E6C /* WBProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBProfileViewController.swift; sourceTree = "<group>"; };
+		AAD9F2EF21327ED5000F2E6C /* Bundle+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		AAD9F2DB21327B35000F2E6C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				AAD9F2EF21327ED5000F2E6C /* Bundle+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAD9F2EC21327D5D000F2E6C /* WBDiscoverViewController.swift in Sources */,
+				AAD9F2F021327ED5000F2E6C /* Bundle+Extension.swift in Sources */,
 				AAD9F2E421327CD5000F2E6C /* WBNavigationController.swift in Sources */,
 				AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */,
 				AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */,
