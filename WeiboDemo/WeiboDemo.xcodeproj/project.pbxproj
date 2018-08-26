@@ -24,6 +24,7 @@
 		AAD9F2F421329C35000F2E6C /* WBDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */; };
 		AAD9F2F62132A774000F2E6C /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2F52132A774000F2E6C /* UIBarButtonItem+Extension.swift */; };
 		AAD9F2F82132AA10000F2E6C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2F72132AA10000F2E6C /* UIColor+Extension.swift */; };
+		AAD9F2FC2132AEB6000F2E6C /* WBCustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2FB2132AEB6000F2E6C /* WBCustomNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBDemoViewController.swift; sourceTree = "<group>"; };
 		AAD9F2F52132A774000F2E6C /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		AAD9F2F72132AA10000F2E6C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		AAD9F2FB2132AEB6000F2E6C /* WBCustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBCustomNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				AAD9F2F221329BF0000F2E6C /* Test */,
 				AAD9F2E121327CA5000F2E6C /* WBMainViewController.swift */,
 				AAD9F2E321327CD5000F2E6C /* WBNavigationController.swift */,
+				AAD9F2FB2132AEB6000F2E6C /* WBCustomNavigationBar.swift */,
 				AAD9F2E521327D02000F2E6C /* WBBaseViewController.swift */,
 			);
 			path = Main;
@@ -381,6 +384,7 @@
 				AAD9F2F82132AA10000F2E6C /* UIColor+Extension.swift in Sources */,
 				AAD9F2E421327CD5000F2E6C /* WBNavigationController.swift in Sources */,
 				AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */,
+				AAD9F2FC2132AEB6000F2E6C /* WBCustomNavigationBar.swift in Sources */,
 				AAD9F2F62132A774000F2E6C /* UIBarButtonItem+Extension.swift in Sources */,
 				AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */,
 				AAD9F2E821327D38000F2E6C /* WBHomeViewController.swift in Sources */,

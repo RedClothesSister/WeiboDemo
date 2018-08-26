@@ -9,9 +9,14 @@
 import UIKit
 
 class WBBaseViewController: UIViewController {
+    
+    // 自定义导航条
+    lazy var navigationBar = WBCustomNavigationBar()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64)
+        
         setupUI()
     }
 
@@ -25,5 +30,8 @@ extension WBBaseViewController {
     //设置界面
     @objc func setupUI() {
         view.backgroundColor = UIColor.magenta
+        
+        // 添加导航条
+        view.addSubview(navigationBar)
     }
 }
