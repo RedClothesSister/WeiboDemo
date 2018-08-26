@@ -9,10 +9,13 @@
 import UIKit
 
 class WBMainViewController: UITabBarController {
+    
+    private lazy var composeButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChildController()
+        setupComposeButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,11 +25,29 @@ class WBMainViewController: UITabBarController {
 
 extension WBMainViewController {
     
+    //设置TabBar中间按钮
+    private func setupComposeButton() {
+        //设置按钮的图片和背景颜色
+        composeButton.setImage(#imageLiteral(resourceName: "tabbar_compose_icon_add"), for: .normal)
+        composeButton.setBackgroundImage(#imageLiteral(resourceName: "tabbar_compose_button"), for: .normal)
+        
+        tabBar.addSubview(composeButton)
+        
+        //设置按钮的位置
+        //计算item的个数
+        let count = CGFloat(childViewControllers.count)
+        //计算每一个宽度的个数
+        let tabBarWidth = tabBar.bounds.width / count - 1
+        
+        composeButton.frame = tabBar.bounds.insetBy(dx: 2 * tabBarWidth, dy: 0)
+    }
+    
     //设置所有的子控制器
     private func setupChildController() {
         let array = [
             ["clsName": "WBHomeViewController", "title": "首页", "imageName": "home"],
             ["clsName": "WBMessageViewController", "title": "消息", "imageName": "message"],
+            ["clsName": "UIViewController"],
             ["clsName": "WBDiscoverViewController", "title": "发现", "imageName": "discover"],
             ["clsName": "WBProfileViewController", "title": "我的", "imageName": "profile"]
         ]
