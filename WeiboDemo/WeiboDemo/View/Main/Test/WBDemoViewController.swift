@@ -26,6 +26,7 @@ class WBDemoViewController: WBBaseViewController {
 extension WBDemoViewController {
     override func setupUI() {
         super.setupUI()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", style: .plain, target: self, action: #selector(showNext))
+       
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "下一个", textColor: UIColor.themeColor, target: self, action: #selector(showNext))
     }
 }

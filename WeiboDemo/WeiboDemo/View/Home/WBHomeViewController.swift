@@ -27,10 +27,11 @@ class WBHomeViewController: WBBaseViewController {
 
 extension WBHomeViewController {
     
-    //重写父类的方法
+    // 重写父类的方法
     override func setupUI() {
         super.setupUI()
+
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", textColor: UIColor.themeColor, target: self, action: #selector(showFriends))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "好友", style: .plain, target: self, action: #selector(showFriends))
     }
 }
