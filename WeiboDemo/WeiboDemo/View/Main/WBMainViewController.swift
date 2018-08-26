@@ -21,6 +21,10 @@ class WBMainViewController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc private func composeButtonClick() {
+        
+    }
 }
 
 extension WBMainViewController {
@@ -40,6 +44,9 @@ extension WBMainViewController {
         let tabBarWidth = tabBar.bounds.width / count - 1
         
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * tabBarWidth, dy: 0)
+        
+        //设置按钮监听方法
+        composeButton.addTarget(self, action: #selector(composeButtonClick), for: .touchUpInside)
     }
     
     //设置所有的子控制器
