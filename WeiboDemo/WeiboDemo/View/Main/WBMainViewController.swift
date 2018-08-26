@@ -57,6 +57,9 @@ extension WBMainViewController {
         vc.tabBarItem.image = UIImage(named: "tabbar_" + imageName)
         vc.tabBarItem.selectedImage = UIImage(named: "tabbar_" + imageName + "_selected")?.withRenderingMode(.alwaysOriginal)
         
+        //4.设置tabbar标题字体
+        tabBar.tintColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        
         let nav = WBNavigationController(rootViewController: vc)
         return nav
     }
