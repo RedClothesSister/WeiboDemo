@@ -12,6 +12,9 @@ class WBBaseViewController: UIViewController {
     
     // 自定义导航条
     lazy var navigationBar = WBCustomNavigationBar()
+    
+    // 定义navigationTitle
+    lazy var navigationItemTitle = UINavigationItem()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,13 @@ class WBBaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    // 重写title的 setter方法
+    override var title: String? {
+        didSet {
+            navigationItemTitle.title = title
+        }
+    }
 }
 
 extension WBBaseViewController {
@@ -33,5 +43,8 @@ extension WBBaseViewController {
         
         // 添加导航条
         view.addSubview(navigationBar)
+        
+        // 将item设置给Bar
+        navigationBar.items = [navigationItemTitle]
     }
 }
