@@ -24,6 +24,11 @@ class WBBaseViewController: UIViewController {
         navigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64)
         
         setupUI()
+        loadData()
+    }
+    
+    func loadData() {
+        
     }
     
     // 重写title的 setter方法
