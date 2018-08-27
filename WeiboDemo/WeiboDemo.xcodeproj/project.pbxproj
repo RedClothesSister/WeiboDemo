@@ -198,9 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD9F2F221329BF0000F2E6C /* Test */,
-				AAD9F2E121327CA5000F2E6C /* WBMainViewController.swift */,
-				AAD9F2E321327CD5000F2E6C /* WBNavigationController.swift */,
-				AAD9F2FB2132AEB6000F2E6C /* WBCustomNavigationBar.swift */,
+				AAD9F2FD21338FDB000F2E6C /* MainController */,
 				AAD9F2E521327D02000F2E6C /* WBBaseViewController.swift */,
 			);
 			path = Main;
@@ -244,6 +242,16 @@
 				AAD9F2F321329C35000F2E6C /* WBDemoViewController.swift */,
 			);
 			path = Test;
+			sourceTree = "<group>";
+		};
+		AAD9F2FD21338FDB000F2E6C /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				AAD9F2E121327CA5000F2E6C /* WBMainViewController.swift */,
+				AAD9F2E321327CD5000F2E6C /* WBNavigationController.swift */,
+				AAD9F2FB2132AEB6000F2E6C /* WBCustomNavigationBar.swift */,
+			);
+			path = MainController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

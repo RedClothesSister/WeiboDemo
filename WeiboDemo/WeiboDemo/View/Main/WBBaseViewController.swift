@@ -15,6 +15,9 @@ class WBBaseViewController: UIViewController {
     
     // 定义navigationTitle
     lazy var navigationItemTitle = UINavigationItem()
+    
+    // 创建表格视图,如果用户没有登录不创建表格
+    var baseTabeView: UITableView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +44,11 @@ extension WBBaseViewController {
     @objc func setupUI() {
         view.backgroundColor = UIColor.orange
         
+        setupNavigation()
+    }
+    
+    // 设置导航条
+    private func setupNavigation() {
         // 添加导航条
         view.addSubview(navigationBar)
         
