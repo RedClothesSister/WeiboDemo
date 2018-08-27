@@ -12,10 +12,23 @@ class WBMessageViewController: WBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    @objc private func test() {
+        
+    }
 
+}
+
+extension WBMessageViewController {
+    override func setupUI() {
+        super.setupUI()
+        
+        navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
 }

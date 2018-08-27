@@ -19,7 +19,7 @@ extension UIBarButtonItem {
         baseButton.addTarget(target, action: action, for: .touchUpInside)
         
         if isBackButton {
-            baseButton.setImage(#imageLiteral(resourceName: "navigationbar_back_withtext"), for: .normal)
+            baseButton.setImage(#imageLiteral(resourceName: "navigationbar_back_withtext"), for: UIControlState(rawValue: 0))
             baseButton.setImage(#imageLiteral(resourceName: "navigationbar_back_withtext_highlighted"), for: .highlighted)
             // 重新调整大小
             baseButton.sizeToFit()

@@ -45,12 +45,14 @@ extension WBBaseViewController {
         view.backgroundColor = UIColor.orange
         
         setupNavigation()
+        setupTableView()
     }
     
     // 设置导航条
     private func setupNavigation() {
         // 添加导航条
         view.addSubview(navigationBar)
+        
         
         // 将item设置给Bar
         navigationBar.items = [navigationItemTitle]
@@ -60,5 +62,12 @@ extension WBBaseViewController {
         
         // 设置navigationBar的字体颜色
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 19)]
+    }
+    
+    // 设置tableView
+    private func setupTableView() {
+        baseTabeView = UITableView(frame: view.bounds, style: .plain)
+        
+        view.insertSubview(baseTabeView!, belowSubview: navigationBar)
     }
 }
