@@ -49,5 +49,8 @@ extension WBBaseViewController {
         
         // 设置navigationBar的渲染颜色
         navigationBar.barTintColor = UIColor.barTintColor
+        
+        // 设置navigationBar的字体颜色
+        navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 19)]
     }
 }
