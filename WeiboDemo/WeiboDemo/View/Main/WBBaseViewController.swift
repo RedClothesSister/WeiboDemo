@@ -18,6 +18,9 @@ class WBBaseViewController: UIViewController {
     
     // 创建表格视图,如果用户没有登录不创建表格
     var baseTabeView: UITableView?
+    
+    //定义刷新控件
+    var refreshControl: UIRefreshControl?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,7 @@ class WBBaseViewController: UIViewController {
         loadData()
     }
     
-    func loadData() {
+    @objc func loadData() {
         
     }
     
@@ -89,6 +92,13 @@ extension WBBaseViewController {
         baseTabeView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height, left: 0, bottom: tabBarController?.tabBar.bounds.height ?? 0, right: 0)
         
         view.insertSubview(baseTabeView!, belowSubview: navigationBar)
+        
+        // 1.设置刷新控件
+        refreshControl = UIRefreshControl()
+        // 2.添加到表格视图
+        baseTabeView?.addSubview(refreshControl!)
+        // 3.添加监听方法
+        refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
     }
 }
 
