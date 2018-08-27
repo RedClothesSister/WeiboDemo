@@ -25,10 +25,6 @@ class WBBaseViewController: UIViewController {
         
         setupUI()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     // 重写title的 setter方法
     override var title: String? {
@@ -36,7 +32,19 @@ class WBBaseViewController: UIViewController {
             navigationItemTitle.title = title
         }
     }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }
+/*
+ * 1.extension中不能有属性
+ * 2.extension中不能重写父类的方法
+ */
+
+
+// MARK: - Extension Methods
 
 extension WBBaseViewController {
     
@@ -68,6 +76,27 @@ extension WBBaseViewController {
     private func setupTableView() {
         baseTabeView = UITableView(frame: view.bounds, style: .plain)
         
+        baseTabeView?.delegate = self
+        baseTabeView?.dataSource = self
+        
         view.insertSubview(baseTabeView!, belowSubview: navigationBar)
     }
+}
+
+
+// MARK: - UITableVeiwDelegate,UITableViewDataSource Methods
+
+extension WBBaseViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    // 基类只是准备方法，子类负责具体的实现。
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 只是保证没有语法错误
+        return UITableViewCell()
+    }
+    
+    
 }
