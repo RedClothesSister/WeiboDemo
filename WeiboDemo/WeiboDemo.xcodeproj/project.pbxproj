@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3C4A9E2133EDFC00A18A72 /* WBVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */; };
 		AAD9F2A9213278D4000F2E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */; };
 		AAD9F2AE213278D4000F2E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD9F2AC213278D4000F2E6C /* Main.storyboard */; };
 		AAD9F2B0213278DD000F2E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAD9F2AF213278DD000F2E6C /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBVisitorView.swift; sourceTree = "<group>"; };
 		AAD9F2A5213278D4000F2E6C /* WeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAD9F2AD213278D4000F2E6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AA3C4A9C2133ED9E00A18A72 /* VisitorView */ = {
+			isa = PBXGroup;
+			children = (
+				AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */,
+			);
+			path = VisitorView;
+			sourceTree = "<group>";
+		};
 		AAD9F29C213278D4000F2E6C = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				AAD9F2DC21327B70000F2E6C /* Main */,
+				AA3C4A9C2133ED9E00A18A72 /* VisitorView */,
 				AAD9F2DD21327B78000F2E6C /* Home */,
 				AAD9F2DE21327B7F000F2E6C /* Message */,
 				AAD9F2DF21327B87000F2E6C /* Discover */,
@@ -392,6 +403,7 @@
 				AAD9F2F82132AA10000F2E6C /* UIColor+Extension.swift in Sources */,
 				AAD9F2E421327CD5000F2E6C /* WBNavigationController.swift in Sources */,
 				AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */,
+				AA3C4A9E2133EDFC00A18A72 /* WBVisitorView.swift in Sources */,
 				AAD9F2FC2132AEB6000F2E6C /* WBCustomNavigationBar.swift in Sources */,
 				AAD9F2F62132A774000F2E6C /* UIBarButtonItem+Extension.swift in Sources */,
 				AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */,
