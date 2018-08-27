@@ -35,6 +35,8 @@ class WBBaseViewController: UIViewController {
     
     @objc func loadData() {
         
+        // 如果子类不实现任何方法，默认关闭刷新控件
+        refreshControl?.endRefreshing()
     }
     
     // 重写title的 setter方法
