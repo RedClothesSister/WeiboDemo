@@ -27,11 +27,18 @@ class WBHomeViewController: WBBaseViewController {
         // 模拟 延时 加载数据
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             for i in 0..<20 {
-                self.statusList.insert(i.description, at: 0)
+                if self.isPullUp {
+                    self.statusList.append(i.description)
+                } else {
+                    self.statusList.insert(i.description, at: 0)
+                }
             }
             
             // 结束刷新
             self.refreshControl?.endRefreshing()
+            
+            // 恢复上拉刷新标记
+            self.isPullUp = false
             
             self.baseTabeView?.reloadData()
         }
