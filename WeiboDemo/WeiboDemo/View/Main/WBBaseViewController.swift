@@ -55,7 +55,8 @@ extension WBBaseViewController {
     
     // 设置界面
     @objc func setupUI() {
-        view.backgroundColor = UIColor.orange
+        
+        UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         
         setupNavigation()
         setupTableView()
@@ -83,6 +84,9 @@ extension WBBaseViewController {
         
         baseTabeView?.delegate = self
         baseTabeView?.dataSource = self
+        
+        // 设置内容缩进
+        baseTabeView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height, left: 0, bottom: tabBarController?.tabBar.bounds.height ?? 0, right: 0)
         
         view.insertSubview(baseTabeView!, belowSubview: navigationBar)
     }
