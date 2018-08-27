@@ -39,7 +39,7 @@ extension WBBaseViewController {
     
     // 设置界面
     @objc func setupUI() {
-        view.backgroundColor = UIColor.magenta
+        view.backgroundColor = UIColor.orange
         
         // 添加导航条
         view.addSubview(navigationBar)

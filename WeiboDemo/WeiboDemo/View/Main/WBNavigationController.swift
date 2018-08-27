@@ -17,15 +17,32 @@ class WBNavigationController: UINavigationController {
         navigationBar.isHidden = true
     }
     
-    //重写push方法
+    // 重写push方法
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         
-        //如果不是栈底控制器才需要隐藏，根控制器不需要处理
+        // 如果不是栈底控制器才需要隐藏，根控制器不需要处理
         if childViewControllers.count > 0 {
-            //隐藏底部的Tabbar
+            // 隐藏底部的Tabbar
             viewController.hidesBottomBarWhenPushed = true
         }
         
+        // 判断控制器的类型
+        if let vc = viewController as? WBBaseViewController {
+            
+            var title = "返回"
+            // 判断控制器的层数
+            if childViewControllers.count == 1 {
+                title = childViewControllers.first?.title ?? "返回"
+            }
+            
+            // 取出NavItem
+            vc.navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: title, textColor: UIColor.themeColor, target: self, action: #selector(popToParent))
+        }
+        
         super.pushViewController(viewController, animated: true)
+    }
+    
+    @objc private func popToParent() {
+        popViewController(animated: true)
     }
 }
