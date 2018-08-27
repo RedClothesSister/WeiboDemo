@@ -25,7 +25,7 @@ class WBHomeViewController: WBBaseViewController {
     override func loadData() {
         
         // 模拟 延时 加载数据
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             for i in 0..<20 {
                 if self.isPullUp {
                     self.statusList.append(i.description)

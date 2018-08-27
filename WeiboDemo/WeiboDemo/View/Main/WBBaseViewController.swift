@@ -24,6 +24,9 @@ class WBBaseViewController: UIViewController {
     
     // 上拉刷新的标记
     var isPullUp = false
+    
+    // 用户登录标记
+    var userLogon = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,11 +66,17 @@ extension WBBaseViewController {
     
     // 设置界面
     @objc func setupUI() {
+        view.backgroundColor = UIColor.white
         
         UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         
         setupNavigation()
-        setupTableView()
+        
+        if userLogon {
+            setupTableView()
+        } else {
+            setupVisitorView()
+        }
     }
     
     // 设置导航条
@@ -104,6 +113,13 @@ extension WBBaseViewController {
         baseTabeView?.addSubview(refreshControl!)
         // 3.添加监听方法
         refreshControl?.addTarget(self, action: #selector(loadData), for: .valueChanged)
+    }
+    
+    // 设置访问视图
+    private func setupVisitorView() {
+        let visitorView = UIView(frame: view.bounds)
+        visitorView.backgroundColor = UIColor.orange
+        view.insertSubview(visitorView, belowSubview: navigationBar)
     }
 }
 
