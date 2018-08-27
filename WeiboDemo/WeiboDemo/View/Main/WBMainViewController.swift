@@ -11,11 +11,31 @@ import UIKit
 class WBMainViewController: UITabBarController {
     
     private lazy var composeButton = UIButton()
+    
+    private lazy var orientations = UIInterfaceOrientationMask.portrait
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChildController()
         setupComposeButton()
+        
+    }
+    
+    // 设置屏幕的方向
+    /*
+     * portrait -> 竖屏，肖像
+     * landscape -> 横屏，风景
+     * 使用代码控制设备的方向，好处：可以在需要横屏的时候单独处理。
+     * 设置支持的方向之后，当前的控制器及子控制器都会遵守这个方向
+     * 如果需要横屏，可以通过Model展现
+    */
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return orientations
+        }
+        set {
+            orientations = newValue
+        }
     }
 
     override func didReceiveMemoryWarning() {
