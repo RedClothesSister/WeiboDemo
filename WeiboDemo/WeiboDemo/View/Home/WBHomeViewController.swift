@@ -23,8 +23,17 @@ class WBHomeViewController: WBBaseViewController {
     }
     
     override func loadData() {
-        for i in 0..<20 {
-            statusList.insert(i.description, at: 0)
+        
+        // 模拟 延时 加载数据
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            for i in 0..<20 {
+                self.statusList.insert(i.description, at: 0)
+            }
+            
+            // 结束刷新
+            self.refreshControl?.endRefreshing()
+            
+            self.baseTabeView?.reloadData()
         }
     }
     
