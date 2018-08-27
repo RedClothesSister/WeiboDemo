@@ -36,7 +36,7 @@ class WBNavigationController: UINavigationController {
             }
             
             // 取出NavItem
-            vc.navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: title, textColor: UIColor.themeColor, target: self, action: #selector(popToParent))
+            vc.navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: title, textColor: UIColor.themeColor, target: self, action: #selector(popToParent), isBackButton: true)
         }
         
         super.pushViewController(viewController, animated: true)
