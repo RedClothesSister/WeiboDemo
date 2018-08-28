@@ -25,6 +25,26 @@ class WBVisitorView: UIView {
     // 登录按钮
     private lazy var loginButton = UIButton()
     
+    // 访客视图的信息字典
+    var visitorInfo: [String: String]? {
+        didSet {
+            // 1.取字典信息
+            guard let imageName = visitorInfo?["imageName"],
+                let message = visitorInfo?["message"] else {
+                    return
+            }
+            
+            // 2.设置消息
+            tipLabel.text = message
+            
+            // 3.设置图像，首页不需要设置
+            if imageName == "" {
+                return
+            }
+            iconView.image = UIImage(named: imageName)
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -33,25 +53,6 @@ class WBVisitorView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // 设置访客视图信息 dict: [imageName: Message]
-    func setupInfo(dict: [String: String]) {
-        
-        // 1.取字典信息
-        guard let imageName = dict["imageName"],
-            let message = dict["message"] else {
-                return
-        }
-        
-        // 2.设置消息
-        tipLabel.text = message
-        
-        // 3.设置图像，首页不需要设置
-        if imageName == "" {
-            return
-        }
-        iconView.image = UIImage(named: imageName)
     }
 }
 
