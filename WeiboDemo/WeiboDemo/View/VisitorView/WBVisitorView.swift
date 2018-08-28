@@ -41,6 +41,9 @@ extension WBVisitorView {
     func setupUI() {
         backgroundColor = UIColor.white
         
+        iconView.alpha = 0.7
+        houseIconView.alpha = 0.7
+        
         tipLabel.text = "关注一下，回这里看看有什么惊喜"
         tipLabel.textColor = UIColor.themeColor
         tipLabel.font = UIFont.boldSystemFont(ofSize: 14)
