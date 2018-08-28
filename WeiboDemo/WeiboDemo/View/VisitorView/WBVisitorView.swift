@@ -42,6 +42,9 @@ class WBVisitorView: UIView {
                 return
             }
             iconView.image = UIImage(named: imageName)
+            
+            // 其他控制器的视图显示图像
+            houseIconView.isHidden = true
         }
     }
     
@@ -68,6 +71,7 @@ extension WBVisitorView {
         tipLabel.textColor = UIColor.themeColor
         tipLabel.font = UIFont.boldSystemFont(ofSize: 15)
         tipLabel.numberOfLines = 0
+        tipLabel.textAlignment = .center
         
         registerButton.setTitle("注册", for: .normal)
         registerButton.setTitleColor(UIColor.orange, for: .normal)
