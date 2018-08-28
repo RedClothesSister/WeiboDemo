@@ -66,7 +66,8 @@ extension WBVisitorView {
         
         tipLabel.text = "关注一下，回这里看看有什么惊喜"
         tipLabel.textColor = UIColor.themeColor
-        tipLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        tipLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        tipLabel.numberOfLines = 0
         
         registerButton.setTitle("注册", for: .normal)
         registerButton.setTitleColor(UIColor.orange, for: .normal)
@@ -99,13 +100,14 @@ extension WBVisitorView {
         
         tipLabel.centerXAnchor.constraint(equalTo: iconView.centerXAnchor).isActive = true
         tipLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 20).isActive = true
+        tipLabel.widthAnchor.constraint(equalToConstant: 236).isActive = true
         
         registerButton.leftAnchor.constraint(equalTo: tipLabel.leftAnchor).isActive = true
-        registerButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 30).isActive = true
+        registerButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 50).isActive = true
         registerButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
         loginButton.rightAnchor.constraint(equalTo: tipLabel.rightAnchor).isActive = true
-        loginButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 30).isActive = true
+        loginButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 50).isActive = true
         loginButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }

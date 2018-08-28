@@ -99,13 +99,15 @@ extension WBMainViewController {
         guard let clsName = dict["clsName"] as? String,
               let title = dict["title"] as? String,
               let imageName = dict["imageName"] as? String,
-              let cls = NSClassFromString(Bundle.main.nameSpace + "." + clsName) as? UIViewController.Type else {
+              let cls = NSClassFromString(Bundle.main.nameSpace + "." + clsName) as? WBBaseViewController.Type,
+              let visitorDict = dict["visitorInfo"] as? [String: String] else {
                 return UIViewController()
         }
         
         // 2.创建视图控制器
         let vc = cls.init()
         vc.title = title
+        vc.visitorInfoDictionary = visitorDict
         
         // 3.设置图像
         vc.tabBarItem.image = UIImage(named: "tabbar_" + imageName)
