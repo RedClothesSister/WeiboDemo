@@ -78,11 +78,11 @@ extension WBMainViewController {
     // 设置所有的子控制器
     private func setupChildController() {
         let array = [
-            ["clsName": "WBHomeViewController", "title": "首页", "imageName": "home", "visitorInfo": ["imageName": "", "message": "哈哈"]],
-            ["clsName": "WBMessageViewController", "title": "消息", "imageName": "message"],
+            ["clsName": "WBHomeViewController", "title": "首页", "imageName": "home", "visitorInfo": ["imageName": "", "message": "关注一下，回这里看看有什么惊喜"]],
+            ["clsName": "WBMessageViewController", "title": "消息", "imageName": "message", "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]],
             ["clsName": "UIViewController"],
-            ["clsName": "WBDiscoverViewController", "title": "发现", "imageName": "discover"],
-            ["clsName": "WBProfileViewController", "title": "我的", "imageName": "profile"]
+            ["clsName": "WBDiscoverViewController", "title": "发现", "imageName": "discover", "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，最新最热微博尽在掌握中，不再与实事潮流插肩而过"]],
+            ["clsName": "WBProfileViewController", "title": "我的", "imageName": "profile", "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，你的微博、相册和个人资料会显示在这里，展示给别人"]]
         ]
         
         var arrayModel = [UIViewController]()
