@@ -78,11 +78,24 @@ extension WBMainViewController {
     // 设置所有的子控制器
     private func setupChildController() {
         
+        // 获取沙盒json路径
+        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+        
+        // 加载data
+        var data = NSData(contentsOfFile: jsonPath)
+        
+        // 判断data是否有值，如果没有，说明本地沙盒没有文件
+        if data == nil {
+            let path = Bundle.main.path(forResource: "main.json", ofType: nil)
+            data = NSData(contentsOfFile: path!)
+        }
+        
+        // data一定会有值
+        
         // 从Bundle中加载配置json
-        // 1.路径 2.加载NSData 3.反序列化转换成数组
-        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
-              let data = NSData(contentsOfFile: path),
-            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String: Any]] else {
+        // 反序列化转换成数组
+        guard let array = try? JSONSerialization.jsonObject(with: data! as Data, options: []) as? [[String: Any]] else {
             return
         }
         var arrayModel = [UIViewController]()
