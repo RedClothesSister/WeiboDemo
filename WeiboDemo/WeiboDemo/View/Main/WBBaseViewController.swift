@@ -27,6 +27,9 @@ class WBBaseViewController: UIViewController {
     
     // 用户登录标记
     var userLogon = false
+    
+    //
+    var visitorInfoDictionary: [String: String]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +122,8 @@ extension WBBaseViewController {
     private func setupVisitorView() {
         let visitorView = WBVisitorView(frame: view.bounds)
         view.insertSubview(visitorView, belowSubview: navigationBar)
+        
+        visitorView.visitorInfo = visitorInfoDictionary
     }
 }
 
