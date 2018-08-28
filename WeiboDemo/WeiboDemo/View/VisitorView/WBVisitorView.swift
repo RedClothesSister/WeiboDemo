@@ -39,7 +39,7 @@ class WBVisitorView: UIView {
 extension WBVisitorView {
     
     func setupUI() {
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.VisitorBackgroundColor
         
         iconView.alpha = 0.7
         houseIconView.alpha = 0.7
