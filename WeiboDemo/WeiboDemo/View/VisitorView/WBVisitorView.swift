@@ -34,6 +34,25 @@ class WBVisitorView: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // 设置访客视图信息 dict: [imageName: Message]
+    func setupInfo(dict: [String: String]) {
+        
+        // 1.取字典信息
+        guard let imageName = dict["imageName"],
+            let message = dict["message"] else {
+                return
+        }
+        
+        // 2.设置消息
+        tipLabel.text = message
+        
+        // 3.设置图像，首页不需要设置
+        if imageName == "" {
+            return
+        }
+        iconView.image = UIImage(named: imageName)
+    }
 }
 
 extension WBVisitorView {
