@@ -77,19 +77,16 @@ extension WBMainViewController {
     
     // 设置所有的子控制器
     private func setupChildController() {
-        let array = [
-            ["clsName": "WBHomeViewController", "title": "首页", "imageName": "home", "visitorInfo": ["imageName": "", "message": "关注一下，回这里看看有什么惊喜"]],
-            ["clsName": "WBMessageViewController", "title": "消息", "imageName": "message", "visitorInfo": ["imageName": "visitordiscover_image_message", "message": "登录后，别人评论你的微博，发给你的消息，都会在这里收到通知"]],
-            ["clsName": "UIViewController"],
-            ["clsName": "WBDiscoverViewController", "title": "发现", "imageName": "discover", "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，最新最热微博尽在掌握中，不再与实事潮流插肩而过"]],
-            ["clsName": "WBProfileViewController", "title": "我的", "imageName": "profile", "visitorInfo": ["imageName": "visitordiscover_image_profile", "message": "登录后，你的微博、相册和个人资料会显示在这里，展示给别人"]]
-        ]
         
-        let data = try? JSONSerialization.data(withJSONObject: array, options: [.prettyPrinted])
-        (data! as NSData).write(toFile: "/Users/huangjunwei/Desktop/demo.json", atomically: true)
-        
+        // 从Bundle中加载配置json
+        // 1.路径 2.加载NSData 3.反序列化转换成数组
+        guard let path = Bundle.main.path(forResource: "main.json", ofType: nil),
+              let data = NSData(contentsOfFile: path),
+            let array = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [[String: Any]] else {
+            return
+        }
         var arrayModel = [UIViewController]()
-        for dict in array {
+        for dict in array! {
             arrayModel.append(controller(dict: dict as [String : AnyObject]))
         }
         
