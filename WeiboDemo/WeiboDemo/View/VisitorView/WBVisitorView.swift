@@ -39,6 +39,7 @@ class WBVisitorView: UIView {
             
             // 3.设置图像，首页不需要设置
             if imageName == "" {
+                rotationAnimate()
                 return
             }
             iconView.image = UIImage(named: imageName)
@@ -56,6 +57,20 @@ class WBVisitorView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // 旋转动画
+    func rotationAnimate() {
+        let rotation = CABasicAnimation(keyPath: "transform.rotation")
+        
+        rotation.toValue = 2 * Double.pi
+        rotation.duration = 30
+        rotation.repeatCount = MAXFLOAT
+        
+        // 动画完成之后不删除
+        rotation.isRemovedOnCompletion = false
+        
+        iconView.layer.add(rotation, forKey: "rotation")
     }
 }
 
