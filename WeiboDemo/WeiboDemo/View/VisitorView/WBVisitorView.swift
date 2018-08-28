@@ -74,6 +74,15 @@ extension WBVisitorView {
         houseIconView.centerXAnchor.constraint(equalTo: iconView.centerXAnchor).isActive = true
         houseIconView.centerYAnchor.constraint(equalTo: iconView.centerYAnchor, constant: -6).isActive = true
         
+        tipLabel.centerXAnchor.constraint(equalTo: iconView.centerXAnchor).isActive = true
+        tipLabel.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 20).isActive = true
         
+        registerButton.leftAnchor.constraint(equalTo: tipLabel.leftAnchor).isActive = true
+        registerButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 30).isActive = true
+        registerButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        loginButton.rightAnchor.constraint(equalTo: tipLabel.rightAnchor).isActive = true
+        loginButton.topAnchor.constraint(equalTo: tipLabel.topAnchor, constant: 30).isActive = true
+        loginButton.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
