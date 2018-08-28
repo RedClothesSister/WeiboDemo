@@ -44,7 +44,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+}
 
 
+//  MARK: - 从服务器加载应用数据
+
+extension AppDelegate {
+    private func loadAppInfo() {
+        
+        // 1.模拟异步
+        DispatchQueue.global().async {
+            
+            let url = Bundle.main.path(forResource: "main.json", ofType: nil)
+            let data = NSData(contentsOfFile: url!)
+            
+            // 写入磁盘
+            let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
+            let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+            data?.write(toFile: jsonPath, atomically: true)
+        }
+    }
 }
 
