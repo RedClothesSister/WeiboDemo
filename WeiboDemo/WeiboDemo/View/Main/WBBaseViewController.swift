@@ -96,6 +96,8 @@ extension WBBaseViewController {
         
         // 设置navigationBar的字体颜色
         navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.darkGray, NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 19)]
+        // 设置系统按钮的文字渲染颜色
+        navigationBar.tintColor = UIColor.orange
     }
     
     // 设置tableView
