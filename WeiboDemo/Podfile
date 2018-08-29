@@ -6,6 +6,7 @@ target 'WeiboDemo' do
   use_frameworks!
 
   # Pods for WeiboDemo
+  pod 'AFNetworking'
 
   target 'WeiboDemoTests' do
     inherit! :search_paths
