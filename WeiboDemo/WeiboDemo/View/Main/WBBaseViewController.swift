@@ -124,6 +124,10 @@ extension WBBaseViewController {
         view.insertSubview(visitorView, belowSubview: navigationBar)
         
         visitorView.visitorInfo = visitorInfoDictionary
+        
+        // 添加访客视图的按钮监听方法
+        visitorView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        visitorView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
     }
 }
 
@@ -165,5 +169,19 @@ extension WBBaseViewController: UITableViewDelegate, UITableViewDataSource {
             loadData()
         }
     }
-    
 }
+
+
+// MARK: - 访客视图监听方法
+
+extension WBBaseViewController {
+    
+    @objc private func login() {
+        print("用户登录")
+    }
+    
+    @objc private func register() {
+        print("用户注册")
+    }
+}
+

@@ -20,10 +20,10 @@ class WBVisitorView: UIView {
     private lazy var tipLabel = UILabel()
     
     // 注册按钮
-    private lazy var registerButton = UIButton()
+    lazy var registerButton = UIButton()
     
     // 登录按钮
-    private lazy var loginButton = UIButton()
+    lazy var loginButton = UIButton()
     
     // 访客视图的信息字典
     var visitorInfo: [String: String]? {
