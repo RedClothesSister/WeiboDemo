@@ -11,6 +11,7 @@
 		2C44E91F65F27C3CBC4C030E /* Pods_WeiboDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AF87BE26EDA6202E2D5D4FB /* Pods_WeiboDemo.framework */; };
 		AA3C4A9E2133EDFC00A18A72 /* WBVisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */; };
 		AA3C4AA02133FD9000A18A72 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3C4A9F2133FD9000A18A72 /* ViewController.swift */; };
+		AA3DEE262136553100750449 /* WBNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DEE252136553100750449 /* WBNetworkManager.swift */; };
 		AA6EA5E021353691009DD887 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6EA5DF21353691009DD887 /* main.json */; };
 		AAD9F2A9213278D4000F2E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */; };
 		AAD9F2AE213278D4000F2E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD9F2AC213278D4000F2E6C /* Main.storyboard */; };
@@ -61,6 +62,7 @@
 		8D9F4DDDD77D9765A508EE56 /* Pods-WeiboDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeiboDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeiboDemo/Pods-WeiboDemo.release.xcconfig"; sourceTree = "<group>"; };
 		AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBVisitorView.swift; sourceTree = "<group>"; };
 		AA3C4A9F2133FD9000A18A72 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AA3DEE252136553100750449 /* WBNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNetworkManager.swift; sourceTree = "<group>"; };
 		AA6EA5DF21353691009DD887 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		AAD9F2A5213278D4000F2E6C /* WeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,14 @@
 				AA3C4A9D2133EDFC00A18A72 /* WBVisitorView.swift */,
 			);
 			path = VisitorView;
+			sourceTree = "<group>";
+		};
+		AA3DEE24213654E600750449 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				AA3DEE252136553100750449 /* WBNetworkManager.swift */,
+			);
+			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		AAD9F29C213278D4000F2E6C = {
@@ -235,6 +245,7 @@
 		AAD9F2DA21327B08000F2E6C /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AA3DEE24213654E600750449 /* NetworkService */,
 				AAD9F2DB21327B35000F2E6C /* Extensions */,
 			);
 			path = Tools;
@@ -548,6 +559,7 @@
 				AAD9F2A9213278D4000F2E6C /* AppDelegate.swift in Sources */,
 				AAD9F2E221327CA5000F2E6C /* WBMainViewController.swift in Sources */,
 				AAD9F2E621327D02000F2E6C /* WBBaseViewController.swift in Sources */,
+				AA3DEE262136553100750449 /* WBNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,7 +736,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -740,7 +755,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -757,7 +775,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -775,7 +797,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemoTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -792,7 +818,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -809,7 +839,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YSKWHS8KH9;
 				INFOPLIST_FILE = WeiboDemoUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hjw.WeiboDemoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

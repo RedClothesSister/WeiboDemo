@@ -26,7 +26,7 @@ class WBBaseViewController: UIViewController {
     var isPullUp = false
     
     // 用户登录标记
-    var userLogon = false
+    var userLogon = true
     
     //
     var visitorInfoDictionary: [String: String]?
