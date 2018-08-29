@@ -7,6 +7,11 @@ target 'WeiboDemo' do
 
   # Pods for WeiboDemo
   pod 'AFNetworking'
+  pod 'SDWebImage'
+  pod 'YYModel'
+  pod 'FMDB'
+  pod 'SVProgressHUD'
+  pod 'pop'
 
   target 'WeiboDemoTests' do
     inherit! :search_paths
