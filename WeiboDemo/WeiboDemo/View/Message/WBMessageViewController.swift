@@ -26,9 +26,9 @@ class WBMessageViewController: WBBaseViewController {
 }
 
 extension WBMessageViewController {
-    override func setupUI() {
-        super.setupUI()
-        
+    
+    override  func setupTableView() {
+        super.setupTableView()
         navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     }
 }

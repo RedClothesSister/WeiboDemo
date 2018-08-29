@@ -72,10 +72,9 @@ extension WBHomeViewController {
 
 extension WBHomeViewController {
     
-    // 重写父类的方法
-    override func setupUI() {
-        super.setupUI()
-
+    override func setupTableView() {
+        
+        super.setupTableView()
         navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: "好友", textColor: UIColor.themeColor, target: self, action: #selector(showFriends))
         
         // 注册原型cell

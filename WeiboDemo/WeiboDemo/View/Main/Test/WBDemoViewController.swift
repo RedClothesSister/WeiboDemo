@@ -24,9 +24,9 @@ class WBDemoViewController: WBBaseViewController {
 }
 
 extension WBDemoViewController {
-    override func setupUI() {
-        super.setupUI()
-       
-        navigationItemTitle.rightBarButtonItem = UIBarButtonItem(title: "下一个", textColor: UIColor.themeColor, target: self, action: #selector(showNext))
+    @objc override func setupTableView() {
+        super.setupTableView()
+
+         navigationItemTitle.rightBarButtonItem = UIBarButtonItem(title: "下一个", textColor: UIColor.themeColor, target: self, action: #selector(showNext))
     }
 }

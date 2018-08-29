@@ -68,7 +68,7 @@ class WBBaseViewController: UIViewController {
 extension WBBaseViewController {
     
     // 设置界面
-    @objc func setupUI() {
+    @objc private func setupUI() {
         view.backgroundColor = UIColor.white
         
         UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
@@ -99,7 +99,7 @@ extension WBBaseViewController {
     }
     
     // 设置tableView
-    private func setupTableView() {
+    @objc func setupTableView() {
         baseTabeView = UITableView(frame: view.bounds, style: .plain)
         
         baseTabeView?.delegate = self
@@ -128,6 +128,10 @@ extension WBBaseViewController {
         // 添加访客视图的按钮监听方法
         visitorView.loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
         visitorView.registerButton.addTarget(self, action: #selector(register), for: .touchUpInside)
+        
+        // 设置导航条按钮
+        navigationItemTitle.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .plain, target: self, action: #selector(register))
+        navigationItemTitle.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .plain, target: self, action: #selector(login))
     }
 }
 
