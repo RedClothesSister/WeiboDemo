@@ -21,6 +21,7 @@ class WBMainViewController: UITabBarController {
         super.viewDidLoad()
         setupChildController()
         setupComposeButton()
+        delegate = self
         
         setupTimer()
     }
@@ -76,7 +77,7 @@ extension WBMainViewController {
         // 计算item的个数
         let count = CGFloat(childViewControllers.count)
         // 计算每一个宽度的个数
-        let tabBarWidth = tabBar.bounds.width / count - 1
+        let tabBarWidth = tabBar.bounds.width / count
         
         composeButton.frame = tabBar.bounds.insetBy(dx: 2 * tabBarWidth, dy: 0)
         
@@ -150,7 +151,7 @@ extension WBMainViewController {
     
     //
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     @objc private func updateTimer() {
@@ -167,5 +168,22 @@ extension WBMainViewController {
             // 设置App 的badgeValue   从iOS 8.0之后，要要用户授权才能够显示
             UIApplication.shared.applicationIconBadgeNumber = count
         }
+    }
+}
+
+
+// MARK: - UITabBarControllerDelegate
+
+extension WBMainViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        print("将要切换到:\(viewController)")
+        
+        // 判断目标是否是 UIViewController
+        return !viewController.isMember(of: UIViewController.self)
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        
     }
 }

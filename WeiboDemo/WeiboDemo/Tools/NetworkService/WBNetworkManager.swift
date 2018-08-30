@@ -23,7 +23,7 @@ class WBNetworkManager: AFHTTPSessionManager {
     
     // 访问令牌, 所有的网络请求都基于此令牌(登录除外)
     // 为了保护用户安全，token是有时限的，默认用户是3天
-    var accessToken: String? = "2.00heeKrFFDm_dD2bc18c52d3_hGicD"
+    var accessToken: String? = "2.00heeKrFSw4QDB874ca1a2abuDmXuB"
     // 用户的微博 id
     var uid: String? = "5365823342"
     
