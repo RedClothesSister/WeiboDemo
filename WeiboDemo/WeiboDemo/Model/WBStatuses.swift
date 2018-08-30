@@ -10,6 +10,7 @@ import UIKit
 import YYModel
 
 // 微博数据模型
+// 模型的每一个属性加上@objc --> 解决YYModel数组转模型的后数组为nil的Bug
 class WBStatuses: NSObject {
     // 微博ID
     @objc var id: Int64 = 0

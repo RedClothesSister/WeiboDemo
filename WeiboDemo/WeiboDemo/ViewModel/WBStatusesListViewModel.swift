@@ -23,7 +23,10 @@ class WBStatusesListViewModel {
     
     func loadStatuses(completion: @escaping (_ isSuccess: Bool) -> ()) {
         
-        WBNetworkManager.shared.statuses { (list, isSuccess) in
+        // since_id 下拉刷新，取出数组中的第一条微博的id
+        let since_id = statusesList.first?.id ?? 0
+        
+        WBNetworkManager.shared.statuses(since_id: since_id, max_id: 0) { (list, isSuccess) in
             
             // 1. 字典转模型
             guard let array = NSArray.yy_modelArray(with: WBStatuses.self, json: list ?? []) as? [WBStatuses] else {
@@ -31,7 +34,8 @@ class WBStatusesListViewModel {
                 return
             }
             // 2.拼接数据
-            self.statusesList += array
+            // 下拉刷新应该将数据插入在前面
+            self.statusesList = array + self.statusesList
             
             // 3.完成回调
             completion(isSuccess)
