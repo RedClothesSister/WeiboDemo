@@ -24,15 +24,15 @@ class WBHomeViewController: WBBaseViewController {
     
     override func loadData() {
         
-        listViewModel.loadStatuses(pullup: self.isPullUp) { (isSuccess) in
+        listViewModel.loadStatuses(pullup: self.isPullUp) { (isSuccess, hasMorePullup) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
             
-            // 恢复上拉刷新标记
             self.isPullUp = false
             
-            self.baseTabeView?.reloadData()
-
+            if hasMorePullup {
+                self.baseTabeView?.reloadData()
+            }
         }
     }
     

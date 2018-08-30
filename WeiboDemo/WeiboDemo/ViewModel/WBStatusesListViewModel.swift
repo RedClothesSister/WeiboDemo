@@ -17,36 +17,50 @@ import Foundation
  * 1. 字典转模型
  * 2.下拉上拉刷新
  */
+private var maxPullupTimes = 3
+
 class WBStatusesListViewModel {
     
     lazy var statusesList = [WBStatuses]()
+    private var pullupErrorTimes = 0
     
-    func loadStatuses(pullup: Bool, completion: @escaping (_ isSuccess: Bool) -> ()) {
+    func loadStatuses(pullup: Bool, completion: @escaping (_ isSuccess: Bool, _ hasMorePullup: Bool) -> ()) {
         
-        // since_id 下拉刷新
-        let since_id = pullup ? 0 : statusesList.first?.id ?? 0
-        // max_id 上拉刷新
-        let max_id = !pullup ? 0 : statusesList.last?.id ?? 0
-        
+        if pullup && pullupErrorTimes > maxPullupTimes {
+            completion(true, false)
             
+            return
+        }
+        
+        // since_id 取出数组中第一条微博的ID
+        let since_id = pullup ? 0 : (self.statusesList.first?.id ?? 0)
+        // max_ix 取出数组中的最后一条微博的ID
+        let max_id = !pullup ? 0 : (self.statusesList.last?.id ?? 0)
+        
         WBNetworkManager.shared.statuses(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             
             // 1. 字典转模型
             guard let array = NSArray.yy_modelArray(with: WBStatuses.self, json: list ?? []) as? [WBStatuses] else {
-                completion(isSuccess)
+                completion(isSuccess, false)
                 return
             }
-            // 2.拼接数据
             if pullup {
-                // 上拉刷新，将数据拼接在数组的末尾
+                // 上拉刷新，将结果拼接在数组中的最前面
                 self.statusesList += array
             } else {
-                // 下拉刷新，将数组拼接在数组的最前面
+                // 下拉刷新，将结果拼接在数组中的最后面
                 self.statusesList = array + self.statusesList
             }
             
-            // 3.完成回调
-            completion(isSuccess)
+            if pullup && array.count == 0 {
+                self.pullupErrorTimes += 1
+                completion(isSuccess,false)
+                
+            } else {
+                // 3.完成回调
+                completion(isSuccess, true)
+            }
+            
         }
     }
 }
