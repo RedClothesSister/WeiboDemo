@@ -19,6 +19,9 @@ class WBMainViewController: UITabBarController {
         setupChildController()
         setupComposeButton()
         
+        WBNetworkManager.shared.unreadCount { (count) in
+            print("有\(count)条微博未读！")
+        }
     }
     
     // 设置屏幕的方向

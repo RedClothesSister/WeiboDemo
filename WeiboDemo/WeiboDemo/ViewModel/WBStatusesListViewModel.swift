@@ -24,7 +24,7 @@ class WBStatusesListViewModel {
     lazy var statusesList = [WBStatuses]()
     private var pullupErrorTimes = 0
     
-    func loadStatuses(pullup: Bool, completion: @escaping (_ isSuccess: Bool, _ hasMorePullup: Bool) -> ()) {
+    func loadStatuses(pullup: Bool, completion: @escaping (_ isSuccess: Bool, _ shouldRefresh: Bool) -> ()) {
         
         if pullup && pullupErrorTimes > maxPullupTimes {
             completion(true, false)
