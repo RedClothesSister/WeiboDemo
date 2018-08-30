@@ -163,6 +163,9 @@ extension WBMainViewController {
             } else {
                 self.tabBar.items?[0].badgeValue = nil
             }
+            
+            // 设置App 的badgeValue   从iOS 8.0之后，要要用户授权才能够显示
+            UIApplication.shared.applicationIconBadgeNumber = count
         }
     }
 }
