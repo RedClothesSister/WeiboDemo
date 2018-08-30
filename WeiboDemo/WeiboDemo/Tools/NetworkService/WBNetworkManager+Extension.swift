@@ -17,7 +17,7 @@ extension WBNetworkManager {
         // 用AFN网络工具加载微博数据
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         
-        let params = ["since_id": "\(since_id)", "max_id": "\(max_id)"]
+        let params = ["since_id": "\(since_id)", "max_id": "\(max_id > 0 ? -1 : 0)"]
         
         // 网络请求
         tokenRequest(method: .GET, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in

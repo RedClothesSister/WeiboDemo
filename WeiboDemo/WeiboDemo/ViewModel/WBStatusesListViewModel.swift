@@ -21,12 +21,15 @@ class WBStatusesListViewModel {
     
     lazy var statusesList = [WBStatuses]()
     
-    func loadStatuses(completion: @escaping (_ isSuccess: Bool) -> ()) {
+    func loadStatuses(pullup: Bool, completion: @escaping (_ isSuccess: Bool) -> ()) {
         
-        // since_id 下拉刷新，取出数组中的第一条微博的id
-        let since_id = statusesList.first?.id ?? 0
+        // since_id 下拉刷新
+        let since_id = pullup ? 0 : statusesList.first?.id ?? 0
+        // max_id 上拉刷新
+        let max_id = !pullup ? 0 : statusesList.last?.id ?? 0
         
-        WBNetworkManager.shared.statuses(since_id: since_id, max_id: 0) { (list, isSuccess) in
+            
+        WBNetworkManager.shared.statuses(since_id: since_id, max_id: max_id) { (list, isSuccess) in
             
             // 1. 字典转模型
             guard let array = NSArray.yy_modelArray(with: WBStatuses.self, json: list ?? []) as? [WBStatuses] else {
@@ -34,8 +37,13 @@ class WBStatusesListViewModel {
                 return
             }
             // 2.拼接数据
-            // 下拉刷新应该将数据插入在前面
-            self.statusesList = array + self.statusesList
+            if pullup {
+                // 上拉刷新，将数据拼接在数组的末尾
+                self.statusesList += array
+            } else {
+                // 下拉刷新，将数组拼接在数组的最前面
+                self.statusesList = array + self.statusesList
+            }
             
             // 3.完成回调
             completion(isSuccess)
