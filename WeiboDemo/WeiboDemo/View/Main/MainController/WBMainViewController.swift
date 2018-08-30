@@ -13,15 +13,21 @@ class WBMainViewController: UITabBarController {
     private lazy var composeButton = UIButton()
     
     private lazy var orientations = UIInterfaceOrientationMask.portrait
+    
+    // 定时器
+    private var timer: Timer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChildController()
         setupComposeButton()
         
-        WBNetworkManager.shared.unreadCount { (count) in
-            print("有\(count)条微博未读！")
-        }
+        setupTimer()
+    }
+    
+    deinit {
+        // 销毁定时器
+        timer?.invalidate()
     }
     
     // 设置屏幕的方向
@@ -134,5 +140,29 @@ extension WBMainViewController {
         
         let nav = WBNavigationController(rootViewController: vc)
         return nav
+    }
+}
+
+
+// MARK: - 时钟相关方法
+
+extension WBMainViewController {
+    
+    //
+    private func setupTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+    }
+    
+    @objc private func updateTimer() {
+        WBNetworkManager.shared.unreadCount { (count) in
+            
+            print("检测到\(count)条新微博")
+            // 设置首页 tabbarItem 的badgeNumber
+            if count > 0 {
+                self.tabBar.items?[0].badgeValue = "\(count)"
+            } else {
+                self.tabBar.items?[0].badgeValue = nil
+            }
+        }
     }
 }
