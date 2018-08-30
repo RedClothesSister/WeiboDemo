@@ -12,7 +12,7 @@ private let cellId = "cellId"
 
 class WBHomeViewController: WBBaseViewController {
     
-    private lazy var statusList = [String]()
+    private lazy var listViewModel = WBStatusesListViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,23 +24,7 @@ class WBHomeViewController: WBBaseViewController {
     
     override func loadData() {
         
-        WBNetworkManager.shared.statuses { (list, isSuccess) in
-            
-            // 字典转模型 绑定表格数据
-            print(list ?? "没有取到数据")
-            print("数据获取完成")
-        }
-        
-        // 模拟 延时 加载数据
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            for i in 0..<20 {
-                if self.isPullUp {
-                    self.statusList.append(i.description)
-                } else {
-                    self.statusList.insert(i.description, at: 0)
-                }
-            }
-            
+        listViewModel.loadStatuses { (isSuccess) in
             // 结束刷新
             self.refreshControl?.endRefreshing()
             
@@ -48,6 +32,7 @@ class WBHomeViewController: WBBaseViewController {
             self.isPullUp = false
             
             self.baseTabeView?.reloadData()
+
         }
     }
     
@@ -64,12 +49,12 @@ class WBHomeViewController: WBBaseViewController {
 extension WBHomeViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return statusList.count
+        return listViewModel.statusesList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        cell.textLabel?.text = statusList[indexPath.row]
+        cell.textLabel?.text = listViewModel.statusesList[indexPath.row].text
         return cell
     }
 }

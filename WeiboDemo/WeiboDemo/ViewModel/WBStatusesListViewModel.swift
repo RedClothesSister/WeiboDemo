@@ -22,15 +22,14 @@ class WBStatusesListViewModel {
     lazy var statusesList = [WBStatuses]()
     
     func loadStatuses(completion: @escaping (_ isSuccess: Bool) -> ()) {
+        
         WBNetworkManager.shared.statuses { (list, isSuccess) in
             
             // 1. 字典转模型
             guard let array = NSArray.yy_modelArray(with: WBStatuses.self, json: list ?? []) as? [WBStatuses] else {
-                
                 completion(isSuccess)
                 return
             }
-            
             // 2.拼接数据
             self.statusesList += array
             
