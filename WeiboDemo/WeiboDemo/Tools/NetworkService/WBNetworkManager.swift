@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 
 // 枚举支持任何的数据类型
-enum WBHTTPMathod {
+enum WBHTTPMethod {
     case GET
     case POST
 }
@@ -28,7 +28,7 @@ class WBNetworkManager: AFHTTPSessionManager {
     var uid: String? = "5365823342"
     
     // 专门负责拼接token的网络请求方法
-    func tokenRequest(method: WBHTTPMathod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
+    func tokenRequest(method: WBHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
         
         // 0.处理token字典
         guard let token = accessToken else {
@@ -54,7 +54,7 @@ class WBNetworkManager: AFHTTPSessionManager {
     }
     
     // 使用一个函数封装AFN的get和post请求
-    func request(method: WBHTTPMathod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
+    func request(method: WBHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
         
         // 成功回调
         let success = { (task: URLSessionDataTask, json: Any?) -> () in

@@ -179,11 +179,28 @@ extension WBMainViewController: UITabBarControllerDelegate {
         
         print("将要切换到:\(viewController)")
         
+        // 获取控制器在数组中的索引
+        let index = (childViewControllers as NSArray).index(of: viewController)
+        
+        // 判断当前索引是首页， 同时index也是首页 相当于重复点击首页
+        if selectedIndex == 0 && index == selectedIndex {
+            print("点击了首页")
+            
+            // 让表格滚动到顶部
+            // 获取到控制器
+            let nav = childViewControllers[0] as! UINavigationController
+            let vc = nav.childViewControllers[0] as! WBHomeViewController
+            
+            // 滚动至首页
+            vc.baseTabeView?.setContentOffset(CGPoint(x: 0, y: -64), animated: true)
+            
+            // 刷新数据 -- 增加延迟，是保证表格先滚动到顶部再刷新数据
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                vc.loadData()
+            }
+        }
+        
         // 判断目标是否是 UIViewController
         return !viewController.isMember(of: UIViewController.self)
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        
     }
 }
