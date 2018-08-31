@@ -16,6 +16,7 @@ class WBOAuthViewController: UIViewController {
         super.viewDidLoad()
         
         view = webView
+        webView.delegate = self
         
         webView.backgroundColor = UIColor.white
         
@@ -50,10 +51,40 @@ class WBOAuthViewController: UIViewController {
     @objc private func autoFill() {
         
         // 准备js
-        let js = "document.getElementById('userId').value = '1092592926';" + "document.getElementById('passwd').value = 'hjw456831i';"
+        let js = "document.getElementById('userId').value = '1092592926@qq.com';" + "document.getElementById('passwd').value = 'hjw456831i';"
         
         // 让WebView执行js
         webView.stringByEvaluatingJavaScript(from: js)
     }
 
+}
+
+
+// MARK: - UIWebViewDelegate Methods
+
+extension WBOAuthViewController: UIWebViewDelegate {
+    
+    
+    // webView将要加载数据
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        
+        // 1.如果请求地址包含 http://baidu.com 不加载页面，否则加载页面
+        // 是否包含前缀
+        if (request.url?.absoluteString.hasPrefix(WBRedirectURI)) == false {
+            return true
+        }
+        // 2.从http://baidu.com 回调地址中查询 code，如果有，则授权成功，否则授权不成功
+        // query 就是 URL中 ？ 后面的所有的东西
+        if (request.url?.query?.hasPrefix("code=")) == false {
+            
+            close()
+            return false
+        }
+        
+        
+        
+        return true
+    }
 }
