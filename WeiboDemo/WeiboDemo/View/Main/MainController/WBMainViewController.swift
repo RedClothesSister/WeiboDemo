@@ -38,7 +38,12 @@ class WBMainViewController: UITabBarController {
     }
     
     @objc private func userLogin(n: Notification) {
-        print("用户登录通知", n)
+        
+        // 展现用户登录界面
+        let vc = WBOAuthViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
+        
     }
     
     // 设置屏幕的方向
