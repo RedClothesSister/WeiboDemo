@@ -23,7 +23,15 @@ class WBOAuthViewController: UIViewController {
         title = "登录"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", textColor: UIColor.themeColor, target: self, action: #selector(close), isBackButton: true)
 
-        // Do any additional setup after loading the view.
+        
+        // 加载授权页面
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(WBAppKey)&redirect_uri=\(WBRedirectURI)"
+        guard let url = URL(string: urlString) else {
+            return
+        }
+        
+        let request = URLRequest(url: url)
+        webView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {

@@ -166,12 +166,12 @@ extension WBMainViewController {
     
     //
     private func setupTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
     @objc private func updateTimer() {
         
-        if WBNetworkManager.shared.userLogon {
+        if !WBNetworkManager.shared.userLogon {
             return
         }
         
