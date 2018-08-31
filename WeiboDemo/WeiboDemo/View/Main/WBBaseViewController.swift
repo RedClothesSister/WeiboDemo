@@ -25,9 +25,6 @@ class WBBaseViewController: UIViewController {
     // 上拉刷新的标记
     var isPullUp = false
     
-    // 用户登录标记
-    var userLogon = true
-    
     //
     var visitorInfoDictionary: [String: String]?
 
@@ -75,7 +72,7 @@ extension WBBaseViewController {
         
         setupNavigation()
         
-        if userLogon {
+        if WBNetworkManager.shared.accessToken != nil {
             setupTableView()
         } else {
             setupVisitorView()

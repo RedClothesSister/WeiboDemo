@@ -23,6 +23,9 @@ extension WBNetworkManager {
         tokenRequest(method: .GET, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
             //print(json)
             // 从json中获取字典数组  如果 as？失败，result为nil
+            guard let json = json else {
+                return
+            }
             let result = (json as! NSDictionary)["statuses"] as? [[String: AnyObject]]
             completion(result, isSuccess)
         }

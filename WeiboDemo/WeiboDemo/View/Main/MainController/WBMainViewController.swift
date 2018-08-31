@@ -177,8 +177,6 @@ extension WBMainViewController {
 extension WBMainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         
-        print("将要切换到:\(viewController)")
-        
         // 获取控制器在数组中的索引
         let index = (childViewControllers as NSArray).index(of: viewController)
         
