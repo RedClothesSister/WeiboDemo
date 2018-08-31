@@ -24,11 +24,21 @@ class WBMainViewController: UITabBarController {
         delegate = self
         
         setupTimer()
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WBUserShouldLoginNotification), object: nil)
     }
     
     deinit {
         // 销毁定时器
         timer?.invalidate()
+        
+        // 注销通知
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func userLogin(n: Notification) {
+        print("用户登录通知", n)
     }
     
     // 设置屏幕的方向
