@@ -22,6 +22,7 @@ class WBOAuthViewController: UIViewController {
         // 设置导航栏
         title = "登录"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", textColor: UIColor.themeColor, target: self, action: #selector(close), isBackButton: true)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "自动填充", textColor: UIColor.themeColor, target: self, action: #selector(autoFill))
 
         
         // 加载授权页面
@@ -45,5 +46,14 @@ class WBOAuthViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // webView的注入，直接通过js修改 本地浏览器中的缓存页面的内容
+    @objc private func autoFill() {
+        
+        // 准备js
+        let js = "document.getElementById('userId').value = '1092592926';" + "document.getElementById('passwd').value = 'hjw456831i';"
+        
+        // 让WebView执行js
+        webView.stringByEvaluatingJavaScript(from: js)
+    }
 
 }
