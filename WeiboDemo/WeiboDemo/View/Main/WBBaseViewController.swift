@@ -33,7 +33,11 @@ class WBBaseViewController: UIViewController {
         navigationBar.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 64)
         
         setupUI()
-        loadData()
+        if WBNetworkManager.shared.userLogon {
+            loadData()
+        } else {
+            
+        }
     }
     
     @objc func loadData() {
@@ -72,7 +76,7 @@ extension WBBaseViewController {
         
         setupNavigation()
         
-        if WBNetworkManager.shared.accessToken != nil {
+        if WBNetworkManager.shared.userLogon {
             setupTableView()
         } else {
             setupVisitorView()

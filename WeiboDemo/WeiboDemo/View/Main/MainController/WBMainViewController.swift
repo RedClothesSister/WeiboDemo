@@ -155,6 +155,11 @@ extension WBMainViewController {
     }
     
     @objc private func updateTimer() {
+        
+        if WBNetworkManager.shared.userLogon {
+            return
+        }
+        
         WBNetworkManager.shared.unreadCount { (count) in
             
             print("检测到\(count)条新微博")
