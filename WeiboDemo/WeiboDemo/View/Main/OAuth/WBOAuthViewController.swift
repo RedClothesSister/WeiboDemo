@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class WBOAuthViewController: UIViewController {
     
@@ -45,6 +46,8 @@ class WBOAuthViewController: UIViewController {
     // 监听方法
     @objc private func close() {
         dismiss(animated: true, completion: nil)
+        
+        SVProgressHUD.dismiss()
     }
     
     // webView的注入，直接通过js修改 本地浏览器中的缓存页面的内容
@@ -88,5 +91,13 @@ extension WBOAuthViewController: UIWebViewDelegate {
         
         // 为了登录成功后不出现百度页面
         return false
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        SVProgressHUD.dismiss()
     }
 }
