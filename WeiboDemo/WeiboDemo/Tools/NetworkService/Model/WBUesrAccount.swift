@@ -44,7 +44,18 @@ class WBUesrAccount: NSObject {
         }
         // 用于字典设置属性值
         self.yy_modelSet(with: dict ?? [:])
-       
+        
+        // 判断token是否过期
+        if expiresDate?.compare(Date()) != .orderedDescending {
+            print("账户过期")
+            
+            // 清空token
+            access_token = nil
+            uid = nil
+            
+            // 删除账户文件
+             _ = try? FileManager.default.removeItem(atPath: jsonPath)
+        }
     }
     
     /*
@@ -62,7 +73,5 @@ class WBUesrAccount: NSObject {
         dict.removeValue(forKey: "expires_in")
         
         WBGetFilePath.writeFileToDisk(dict: dict, fileName: fileName)
-        
-        ///Users/huangjunwei/Library/Developer/CoreSimulator/Devices/78F3FCA0-4317-457E-A978-5E6BAB9FC492/data/Containers/Data/Application/2CEC05A6-3380-493A-B9E5-BA8CC3021953/Documents/userAccount.json
     }
 }
