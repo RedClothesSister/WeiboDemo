@@ -63,7 +63,11 @@ extension WBNetworkManager {
         
         // 发送网络请求
         request(method: .POST, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
-            print(json ?? "")
+            
+            // 直接用字典设置， UserAccount的属性
+            // [:]空字典
+            self.userAccount.yy_modelSet(with: (json as? [String: AnyObject]) ?? [:])
+            print(self.userAccount)
         }
     }
 }
