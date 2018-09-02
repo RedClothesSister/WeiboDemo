@@ -83,8 +83,10 @@ extension WBOAuthViewController: UIWebViewDelegate {
             return false
         }
         
+        let code = request.url?.query?.substring(from: "code=".endIndex)
+        print("code--------\(code)")
         
-        
-        return true
+        // 为了登录成功后不出现百度页面
+        return false
     }
 }
