@@ -18,7 +18,14 @@ class WBUesrAccount: NSObject {
     @objc var uid: String?
     
     //过期日期
-    @objc var expires_in: TimeInterval = 0
+    @objc var expires_in: TimeInterval = 0 {
+        didSet {
+            // 将过期日期的秒数转化为 标准日期
+            expiresDate = Date(timeIntervalSinceNow: expires_in)
+        }
+    }
+    
+    @objc var expiresDate: Date?
     
     override var description: String {
         return yy_modelDescription()

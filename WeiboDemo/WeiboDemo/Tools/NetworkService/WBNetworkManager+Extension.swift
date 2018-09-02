@@ -67,10 +67,8 @@ extension WBNetworkManager {
             guard let json = json else {
                 return
             }
-            
-            print(json)
-            
             self.userAccount.yy_modelSet(with: json as? [String: AnyObject] ?? [:])
+            
             print(self.userAccount)
         }
     }
