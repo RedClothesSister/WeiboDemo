@@ -20,6 +20,8 @@ class WBOAuthViewController: UIViewController {
         webView.delegate = self
         
         webView.backgroundColor = UIColor.white
+        
+        // 取消滚动视图
         webView.scrollView.isScrollEnabled = false
         
         // 设置导航栏
@@ -88,7 +90,9 @@ extension WBOAuthViewController: UIWebViewDelegate {
         }
         
         let code = request.url?.query?.substring(from: "code=".endIndex)
-        print("code--------\(code)")
+        print("授权码------\(code!)")
+        // 使用授权码获取AccessToken
+        WBNetworkManager.shared.getAccessToken(code: code)
         
         // 为了登录成功后不出现百度页面
         return false

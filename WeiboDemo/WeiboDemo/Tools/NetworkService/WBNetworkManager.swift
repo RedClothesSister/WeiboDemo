@@ -18,6 +18,15 @@ enum WBHTTPMethod {
 // 网络管理工具
 class WBNetworkManager: AFHTTPSessionManager {
     
+//    // 创建单例
+//    static var shared: WBNetworkManager {
+//
+//        let instance = WBNetworkManager()
+//        // 设置响应反序列化支持的数据类型
+//        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
+//
+//        return instance
+//    }
     // 创建单例
     static let shared = WBNetworkManager()
     
