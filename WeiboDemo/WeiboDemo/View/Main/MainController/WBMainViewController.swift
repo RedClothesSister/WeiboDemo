@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let fileName = "main.json"
+
 class WBMainViewController: UITabBarController {
     
     private lazy var composeButton = UIButton()
@@ -104,15 +106,14 @@ extension WBMainViewController {
     private func setupChildController() {
         
         // 获取沙盒json路径
-        let docDir = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
-        let jsonPath = (docDir as NSString).appendingPathComponent("main.json")
+        let jsonPath = WBGetFilePath.getFilePath(fileName: fileName)
         
         // 加载data
         var data = NSData(contentsOfFile: jsonPath)
         
         // 判断data是否有值，如果没有，说明本地沙盒没有文件
         if data == nil {
-            let path = Bundle.main.path(forResource: "main.json", ofType: nil)
+            let path = Bundle.main.path(forResource: fileName, ofType: nil)
             data = NSData(contentsOfFile: path!)
         }
         
