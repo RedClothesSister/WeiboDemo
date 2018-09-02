@@ -20,6 +20,7 @@ class WBOAuthViewController: UIViewController {
         webView.delegate = self
         
         webView.backgroundColor = UIColor.white
+        webView.scrollView.isScrollEnabled = false
         
         // 设置导航栏
         title = "登录"
