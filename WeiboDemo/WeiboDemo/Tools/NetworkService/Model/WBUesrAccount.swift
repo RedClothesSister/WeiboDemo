@@ -12,13 +12,13 @@ import UIKit
 class WBUesrAccount: NSObject {
     
     // 访问令牌
-    var access_token: String?
+    @objc var access_token: String?
     
     // 用户代号
-    var uid: String?
+    @objc var uid: String?
     
     //过期日期
-    var expires_in: TimeInterval = 0
+    @objc var expires_in: TimeInterval = 0
     
     override var description: String {
         return yy_modelDescription()
