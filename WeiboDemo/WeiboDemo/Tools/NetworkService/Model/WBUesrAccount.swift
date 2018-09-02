@@ -12,7 +12,7 @@ import UIKit
 class WBUesrAccount: NSObject {
     
     // 访问令牌
-    var access_token: String?
+    var access_token: String? = "2.00vNKcRHKr9ODE863492347caJb9MB"
     
     // 用户代号
     var uid: String?

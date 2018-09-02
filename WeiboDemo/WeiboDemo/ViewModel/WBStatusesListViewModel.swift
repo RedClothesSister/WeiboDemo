@@ -28,7 +28,6 @@ class WBStatusesListViewModel {
         
         if pullup && pullupErrorTimes > maxPullupTimes {
             completion(true, false)
-            
             return
         }
         

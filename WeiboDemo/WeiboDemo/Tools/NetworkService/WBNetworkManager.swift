@@ -18,33 +18,21 @@ enum WBHTTPMethod {
 // 网络管理工具
 class WBNetworkManager: AFHTTPSessionManager {
     
-//    // 创建单例
-//    static var shared: WBNetworkManager {
-//
-//        let instance = WBNetworkManager()
-//        // 设置响应反序列化支持的数据类型
-//        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
-//
-//        return instance
-//    }
     // 创建单例
     static let shared = WBNetworkManager()
     
-    // 访问令牌, 所有的网络请求都基于此令牌(登录除外)
-    // 为了保护用户安全，token是有时限的，默认用户是3天
-    var accessToken: String? //= "2.00vNKcRHKr9ODE863492347caJb9MB"
-    // 用户的微博 id
-    var uid: String? = "5365823342"
+    
+    lazy var userAccount = WBUesrAccount()
     
     var userLogon: Bool {
-        return accessToken != nil
+        return userAccount.access_token != nil
     }
     
     // 专门负责拼接token的网络请求方法
     func tokenRequest(method: WBHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
         
         // 0.处理token字典
-        guard let token = accessToken else {
+        guard let token = userAccount.access_token else {
             
             // FIXME: 发送通知，提示用户登录
             print("没有token！需要登录")
@@ -68,7 +56,6 @@ class WBNetworkManager: AFHTTPSessionManager {
     
     // 使用一个函数封装AFN的get和post请求
     func request(method: WBHTTPMethod = .GET, URLString: String, parameters: [String: AnyObject]?, completion: @escaping (_ json: Any?, _ isSuccess: Bool) -> ()) {
-        
         // 成功回调
         let success = { (task: URLSessionDataTask, json: Any?) -> () in
             completion(json, true)

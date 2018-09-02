@@ -25,6 +25,7 @@ class WBHomeViewController: WBBaseViewController {
     override func loadData() {
         
         listViewModel.loadStatuses(pullup: self.isPullUp) { (isSuccess, shouldRefresh) in
+            
             // 结束刷新
             self.refreshControl?.endRefreshing()
             

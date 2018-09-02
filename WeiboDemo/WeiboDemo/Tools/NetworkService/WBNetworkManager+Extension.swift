@@ -14,6 +14,8 @@ extension WBNetworkManager {
     // max_id: 返回ID小于或等于max_id的微博，默认为0。
     
     func statuses(since_id: Int64 = 0, max_id: Int64 = 0, completion: @escaping (_ list: [[String: AnyObject]]?, _ isSuccess: Bool) -> ()) {
+        
+        
         // 用AFN网络工具加载微博数据
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         
@@ -21,7 +23,7 @@ extension WBNetworkManager {
         
         // 网络请求
         tokenRequest(method: .GET, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
-            //print(json)
+            print(json ?? "数据为空")
             // 从json中获取字典数组  如果 as？失败，result为nil
             guard let json = json else {
                 return
@@ -33,7 +35,7 @@ extension WBNetworkManager {
     
     // 微博未读数量
     func unreadCount(completion: @escaping (_ count: Int) -> ()) {
-        guard let uid = uid else {
+        guard let uid = userAccount.uid else {
             return
         }
         
