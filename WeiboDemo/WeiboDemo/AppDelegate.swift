@@ -8,6 +8,8 @@
 
 import UIKit
 import UserNotifications
+import SVProgressHUD
+import AFNetworking
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,15 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = WBMainViewController()
         window?.makeKeyAndVisible()
         
-        // 取得用户申请授权显示通知
-        if #available(iOS 10, *) {
-            let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (granted, error) in
-            }
-        } else {
-            let notifySetting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-            application.registerUserNotificationSettings(notifySetting)
-        }
+        setupAddition()
         
         return true
     }
@@ -78,3 +72,28 @@ extension AppDelegate {
     }
 }
 
+
+// MARK: - 设置额外信息
+
+extension AppDelegate {
+    
+    
+    private func setupAddition() {
+        
+        // 设置SVProgressHUD显示的最小时间
+        SVProgressHUD.setMinimumDismissTimeInterval(1)
+        
+        // 设置网络加载指示器
+        AFNetworkActivityIndicatorManager.shared().isEnabled = true
+        
+        // 取得用户申请授权显示通知
+        if #available(iOS 10, *) {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .badge, .sound, .carPlay]) { (granted, error) in
+            }
+        } else {
+            let notifySetting = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            UIApplication.shared.registerUserNotificationSettings(notifySetting)
+        }
+    }
+}
