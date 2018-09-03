@@ -16,6 +16,8 @@ class WBHomeViewController: WBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNavTitle()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,5 +74,21 @@ extension WBHomeViewController {
         
         // 注册原型cell
         baseTabeView?.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+    }
+    
+    private func setupNavTitle() {
+        
+        let title = WBNetworkManager.shared.userAccount.screen_name
+        
+        let button = WBTitleButton(title: title)
+        navigationItemTitle.titleView = button
+        
+        button.addTarget(self, action: #selector(titleButtonClick), for: .touchUpInside)
+    }
+    
+    @objc func titleButtonClick(btn: UIButton) {
+        
+        // 设置选中状态
+        btn.isSelected = !btn.isSelected
     }
 }

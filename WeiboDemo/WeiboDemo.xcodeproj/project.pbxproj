@@ -19,6 +19,7 @@
 		AA3DEE302137A33300750449 /* WBStatusesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3DEE2F2137A33300750449 /* WBStatusesListViewModel.swift */; };
 		AA570F6A213910A40013E87B /* WeiBoCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570F69213910A40013E87B /* WeiBoCommon.swift */; };
 		AA570F6D213913750013E87B /* WBOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570F6C213913750013E87B /* WBOAuthViewController.swift */; };
+		AA6CFD6F213D191C0081CA95 /* WBTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CFD6E213D191C0081CA95 /* WBTitleButton.swift */; };
 		AA6EA5E021353691009DD887 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6EA5DF21353691009DD887 /* main.json */; };
 		AAD9F2A9213278D4000F2E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */; };
 		AAD9F2AE213278D4000F2E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD9F2AC213278D4000F2E6C /* Main.storyboard */; };
@@ -77,6 +78,7 @@
 		AA3DEE2F2137A33300750449 /* WBStatusesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBStatusesListViewModel.swift; sourceTree = "<group>"; };
 		AA570F69213910A40013E87B /* WeiBoCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoCommon.swift; sourceTree = "<group>"; };
 		AA570F6C213913750013E87B /* WBOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBOAuthViewController.swift; sourceTree = "<group>"; };
+		AA6CFD6E213D191C0081CA95 /* WBTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTitleButton.swift; sourceTree = "<group>"; };
 		AA6EA5DF21353691009DD887 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		AAD9F2A5213278D4000F2E6C /* WeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +198,14 @@
 				AA570F6C213913750013E87B /* WBOAuthViewController.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		AA6CFD6D213D18F00081CA95 /* TitleButton */ = {
+			isa = PBXGroup;
+			children = (
+				AA6CFD6E213D191C0081CA95 /* WBTitleButton.swift */,
+			);
+			path = TitleButton;
 			sourceTree = "<group>";
 		};
 		AAD9F29C213278D4000F2E6C = {
@@ -319,6 +329,7 @@
 		AAD9F2DD21327B78000F2E6C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				AA6CFD6D213D18F00081CA95 /* TitleButton */,
 				AAD9F2E721327D38000F2E6C /* WBHomeViewController.swift */,
 			);
 			path = Home;
@@ -602,6 +613,7 @@
 				AAD9F2EA21327D46000F2E6C /* WBMessageViewController.swift in Sources */,
 				AA3C4A9E2133EDFC00A18A72 /* WBVisitorView.swift in Sources */,
 				AA3DEE302137A33300750449 /* WBStatusesListViewModel.swift in Sources */,
+				AA6CFD6F213D191C0081CA95 /* WBTitleButton.swift in Sources */,
 				AAD9F2FC2132AEB6000F2E6C /* WBCustomNavigationBar.swift in Sources */,
 				AAD9F2F62132A774000F2E6C /* UIBarButtonItem+Extension.swift in Sources */,
 				AAD9F2EE21327D68000F2E6C /* WBProfileViewController.swift in Sources */,

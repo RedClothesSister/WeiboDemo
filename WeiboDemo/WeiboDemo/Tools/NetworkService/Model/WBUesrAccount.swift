@@ -48,7 +48,7 @@ class WBUesrAccount: NSObject {
 //        print(jsonPath)
         
         // 用于字典设置属性值
-        //self.yy_modelSet(with: dict ?? [:])
+        self.yy_modelSet(with: dict ?? [:])
         
         // 判断token是否过期
         if expiresDate?.compare(Date()) != .orderedDescending {
