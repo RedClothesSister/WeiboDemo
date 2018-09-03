@@ -118,6 +118,9 @@ extension WBBaseViewController {
         // 设置内容缩进
         baseTabeView?.contentInset = UIEdgeInsets(top: navigationBar.bounds.height, left: 0, bottom: tabBarController?.tabBar.bounds.height ?? 0, right: 0)
         
+        // 修改指示器的缩进
+        baseTabeView?.scrollIndicatorInsets = baseTabeView!.contentInset
+        
         view.insertSubview(baseTabeView!, belowSubview: navigationBar)
         
         // 1.设置刷新控件
@@ -208,6 +211,9 @@ extension WBBaseViewController {
         // 需要重新设置UI
         // 在访问view的getter时，如果view=nil， 会调用loadView -> viewdidLoad
         view = nil
+        
+        // 注销通知 避免通知被重复注册
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
