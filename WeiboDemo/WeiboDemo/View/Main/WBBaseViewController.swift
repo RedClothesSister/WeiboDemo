@@ -38,6 +38,13 @@ class WBBaseViewController: UIViewController {
         } else {
             
         }
+        
+        // 注册通知
+        NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: WBUserLoginSuccessedNotification), object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func loadData() {
@@ -191,6 +198,16 @@ extension WBBaseViewController {
     
     @objc private func register() {
         print("用户注册")
+    }
+    
+    @objc private func loginSuccess(n: NSNotification) {
+        
+        print("登录成功")
+        
+        // 更新UI, 将访客视图替换成主页面
+        // 需要重新设置UI
+        // 在访问view的getter时，如果view=nil， 会调用loadView -> viewdidLoad
+        view = nil
     }
 }
 
