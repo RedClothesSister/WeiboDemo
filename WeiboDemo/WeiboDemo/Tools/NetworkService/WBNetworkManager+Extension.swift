@@ -23,7 +23,7 @@ extension WBNetworkManager {
         
         // 网络请求
         tokenRequest(method: .GET, URLString: urlString, parameters: params as [String : AnyObject]) { (json, isSuccess) in
-            print(json ?? "数据为空")
+            
             // 从json中获取字典数组  如果 as？失败，result为nil
             guard let json = json else {
                 return
@@ -72,10 +72,40 @@ extension WBNetworkManager {
             }
             self.userAccount.yy_modelSet(with: json as? [String: AnyObject] ?? [:])
             
-            self.userAccount.saveAccountToDisk()
+            // 加载用户信息
+            self.loadUserInfo(completion: { (dict) in
+                print(dict)
+                
+                self.userAccount.yy_modelSet(with: dict)
+                self.userAccount.saveAccountToDisk()
+                print(self.userAccount)
+                
+                // 用户信息加载完成再完成回调
+                completion(isSuccess)
+            })
+        }
+    }
+}
+
+
+// MARK: - 加载用户信息
+
+extension WBNetworkManager {
+    
+    func loadUserInfo(completion: @escaping (_ dict: [String: AnyObject]) -> ()) {
+        
+        guard let uid = userAccount.uid else {
+            return
+        }
+        
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        
+        let params = ["uid": uid]
+        
+        // 发起网络请求
+        tokenRequest(URLString: urlString, parameters: params as [String: AnyObject]) { (json, isSuccess) in
             
-            // 完成回调
-            completion(isSuccess)
+            completion(json as? [String: AnyObject] ?? [:])
         }
     }
 }

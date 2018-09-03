@@ -95,9 +95,6 @@ extension WBBaseViewController {
         // 添加导航条
         view.addSubview(navigationBar)
         
-        navigationItem.leftBarButtonItem = nil
-        navigationItem.rightBarButtonItem = nil
-        
         // 将item设置给Bar
         navigationBar.items = [navigationItemTitle]
         
@@ -207,7 +204,8 @@ extension WBBaseViewController {
     
     @objc private func loginSuccess(n: NSNotification) {
         
-        print("登录成功")
+        navigationItemTitle.leftBarButtonItem = nil
+        navigationItemTitle.rightBarButtonItem = nil
         
         // 更新UI, 将访客视图替换成主页面
         // 需要重新设置UI

@@ -34,6 +34,7 @@ class WBNetworkManager: AFHTTPSessionManager {
         // 0.处理token字典
         guard let token = userAccount.access_token else {
             
+            // 没有token
             // 发送通知，提示用户登录   一般应用程序在运行过程中，token不会为nil
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBUserShouldLoginNotification), object: nil)
             completion(nil, false)

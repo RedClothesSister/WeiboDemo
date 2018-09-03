@@ -42,20 +42,9 @@ class WBMainViewController: UITabBarController {
     
     @objc private func userLogin(n: Notification) {
         
-        print("登录超时")
-        
-        if n.object != nil {
-            SVProgressHUD.setDefaultMaskType(.gradient)
-            SVProgressHUD.showInfo(withStatus: "登录超时，请重新登录")
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            SVProgressHUD.setDefaultMaskType(.clear)
-            // 展现用户登录界面
-            let vc = WBOAuthViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            self.present(nav, animated: true, completion: nil)
-        }
+        let vc = WBOAuthViewController()
+        let nav = UINavigationController(rootViewController: vc)
+        present(nav, animated: true, completion: nil)
         
     }
     
