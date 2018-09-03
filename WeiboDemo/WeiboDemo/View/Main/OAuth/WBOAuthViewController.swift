@@ -91,7 +91,20 @@ extension WBOAuthViewController: UIWebViewDelegate {
         
         let code = request.url?.query?.substring(from: "code=".endIndex)
         // 使用授权码获取AccessToken
-        WBNetworkManager.shared.getAccessToken(code: code)
+        WBNetworkManager.shared.getAccessToken(code: code) { (isSuccess) in
+            if !isSuccess {
+                SVProgressHUD.showInfo(withStatus: "网络请求失败")
+            } else {
+                SVProgressHUD.showInfo(withStatus: "登录成功")
+                
+                // 跳转出登录界面 通过通知，发送通知消息
+                // 1.发送通知 不关心有没有监听者
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: WBUserLoginSuccessedNotification), object: nil)
+                
+                // 2. 关闭窗口
+                self.close()
+            }
+        }
         
         // 为了登录成功后不出现百度页面
         return false

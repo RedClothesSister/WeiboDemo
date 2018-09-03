@@ -25,3 +25,6 @@ let WBAppScrect = "815854f3ccfb8985c2a937eb9afb5f20"
 
 // 回调地址
 let WBRedirectURI = "http://baidu.com"
+
+// 用户登录成功的通知
+let WBUserLoginSuccessedNotification = "WBUserLoginSuccessedNotification"
