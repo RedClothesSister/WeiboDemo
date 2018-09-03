@@ -12,6 +12,7 @@ class WBDiscoverViewController: WBBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func didReceiveMemoryWarning() {

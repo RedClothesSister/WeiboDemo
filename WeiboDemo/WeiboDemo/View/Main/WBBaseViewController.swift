@@ -95,6 +95,8 @@ extension WBBaseViewController {
         // 添加导航条
         view.addSubview(navigationBar)
         
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
         
         // 将item设置给Bar
         navigationBar.items = [navigationItemTitle]
