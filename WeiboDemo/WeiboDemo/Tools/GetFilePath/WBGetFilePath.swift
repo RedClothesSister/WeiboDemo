@@ -21,7 +21,7 @@ class WBGetFilePath: NSObject {
     
     
     // 写入文件
-    static func writeFileToDisk(dict: [String: AnyObject], fileName: String) {
+    static func writeFileToDisk(dict: [String: AnyObject] = [:], fileName: String) {
         
         guard let data = try? JSONSerialization.data(withJSONObject: dict, options: []) else {
             return

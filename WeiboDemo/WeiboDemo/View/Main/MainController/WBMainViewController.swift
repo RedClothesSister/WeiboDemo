@@ -28,8 +28,13 @@ class WBMainViewController: UITabBarController {
         
         setupTimer()
         
+        
+        
         // 注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WBUserShouldLoginNotification), object: nil)
+        
+        // 设置新特性视图
+        setupNewFeatureView()
     }
     
     deinit {
@@ -107,7 +112,7 @@ extension WBMainViewController {
         
         // 获取沙盒json路径
         let jsonPath = WBGetFilePath.getFilePath(fileName: fileName)
-        
+        print(jsonPath)
         // 加载data
         var data = NSData(contentsOfFile: jsonPath)
         
@@ -221,5 +226,57 @@ extension WBMainViewController: UITabBarControllerDelegate {
         
         // 判断目标是否是 UIViewController
         return !viewController.isMember(of: UIViewController.self)
+    }
+}
+
+
+// MARK: - 设置新特性视图
+
+extension WBMainViewController {
+    private func setupNewFeatureView() {
+        
+        // 0. 判断是否登录
+        if !WBNetworkManager.shared.userLogon {
+            return
+        }
+        
+        // 1.检查版本是否更新
+        
+        // 2.如果更新，显示新特性，否则显示欢迎页面
+        let v = isNewVersion ? WBNewFeatureView() : WBWelcomeView()
+        
+        // 3.添加视图
+        v.frame = view.bounds
+        view.addSubview(v)
+    }
+    
+    // extension 中可以有计算型属性，不会占用存储空间
+    // 版本信息
+    /*
+     * 在App Store每次升级应用程序，都需要增加
+     * 主版本号.次版本号.修订版本号
+     * 主版本号：意味着大量的修改，使用者也需要大的适应
+     * 次版本号：意味着小的修改，某些函数和方法的使用或者参数有变化
+     * 修订版本号：框架或者程序内部bug的修订，不会对使用者造成任何的影响
+     */
+    private var isNewVersion: Bool {
+        
+        // 1.取当前的版本号
+        let dict = Bundle.main.infoDictionary
+        //print(dict)
+        let currentVerison = dict?["CFBundleShortVersionString"] as? String ?? ""
+        print(currentVerison)
+        
+        // 2.取保存在 Document 目录中的之前的版本号
+        let path = "version"
+        WBGetFilePath.writeFileToDisk(fileName: path)
+        
+        let sandBoxVersion = (try? String(contentsOfFile: path)) ?? ""
+        print(sandBoxVersion)
+        // 3.将之前的版本号存储
+        try? (currentVerison as NSString).write(toFile: path, atomically: true, encoding: String.Encoding.utf8.rawValue)
+        
+        // 4.判断两和版本是否相同
+        return currentVerison != sandBoxVersion
     }
 }
