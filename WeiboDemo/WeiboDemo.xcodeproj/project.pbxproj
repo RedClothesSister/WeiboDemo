@@ -20,6 +20,8 @@
 		AA570F6A213910A40013E87B /* WeiBoCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570F69213910A40013E87B /* WeiBoCommon.swift */; };
 		AA570F6D213913750013E87B /* WBOAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA570F6C213913750013E87B /* WBOAuthViewController.swift */; };
 		AA6CFD6F213D191C0081CA95 /* WBTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CFD6E213D191C0081CA95 /* WBTitleButton.swift */; };
+		AA6CFDAC213E042E0081CA95 /* WBWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CFDAB213E042E0081CA95 /* WBWelcomeView.swift */; };
+		AA6CFDAE213E04730081CA95 /* WBNewFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6CFDAD213E04730081CA95 /* WBNewFeatureView.swift */; };
 		AA6EA5E021353691009DD887 /* main.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6EA5DF21353691009DD887 /* main.json */; };
 		AAD9F2A9213278D4000F2E6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */; };
 		AAD9F2AE213278D4000F2E6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAD9F2AC213278D4000F2E6C /* Main.storyboard */; };
@@ -79,6 +81,8 @@
 		AA570F69213910A40013E87B /* WeiBoCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiBoCommon.swift; sourceTree = "<group>"; };
 		AA570F6C213913750013E87B /* WBOAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBOAuthViewController.swift; sourceTree = "<group>"; };
 		AA6CFD6E213D191C0081CA95 /* WBTitleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBTitleButton.swift; sourceTree = "<group>"; };
+		AA6CFDAB213E042E0081CA95 /* WBWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBWelcomeView.swift; sourceTree = "<group>"; };
+		AA6CFDAD213E04730081CA95 /* WBNewFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WBNewFeatureView.swift; sourceTree = "<group>"; };
 		AA6EA5DF21353691009DD887 /* main.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = main.json; sourceTree = "<group>"; };
 		AAD9F2A5213278D4000F2E6C /* WeiboDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeiboDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAD9F2A8213278D4000F2E6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,6 +212,15 @@
 			path = TitleButton;
 			sourceTree = "<group>";
 		};
+		AA6CFDAA213E03F10081CA95 /* NewFeature */ = {
+			isa = PBXGroup;
+			children = (
+				AA6CFDAB213E042E0081CA95 /* WBWelcomeView.swift */,
+				AA6CFDAD213E04730081CA95 /* WBNewFeatureView.swift */,
+			);
+			path = NewFeature;
+			sourceTree = "<group>";
+		};
 		AAD9F29C213278D4000F2E6C = {
 			isa = PBXGroup;
 			children = (
@@ -318,6 +331,7 @@
 		AAD9F2DC21327B70000F2E6C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AA6CFDAA213E03F10081CA95 /* NewFeature */,
 				AA570F6B213913430013E87B /* OAuth */,
 				AAD9F2F221329BF0000F2E6C /* Test */,
 				AAD9F2FD21338FDB000F2E6C /* MainController */,
@@ -607,6 +621,7 @@
 				AA570F6D213913750013E87B /* WBOAuthViewController.swift in Sources */,
 				AAD9F2F021327ED5000F2E6C /* Bundle+Extension.swift in Sources */,
 				AA0240A6213B7C4D00E2BA33 /* WBUesrAccount.swift in Sources */,
+				AA6CFDAE213E04730081CA95 /* WBNewFeatureView.swift in Sources */,
 				AAD9F2F421329C35000F2E6C /* WBDemoViewController.swift in Sources */,
 				AAD9F2F82132AA10000F2E6C /* UIColor+Extension.swift in Sources */,
 				AAD9F2E421327CD5000F2E6C /* WBNavigationController.swift in Sources */,
@@ -624,6 +639,7 @@
 				AAD9F2E621327D02000F2E6C /* WBBaseViewController.swift in Sources */,
 				AA3DEE262136553100750449 /* WBNetworkManager.swift in Sources */,
 				AA570F6A213910A40013E87B /* WeiBoCommon.swift in Sources */,
+				AA6CFDAC213E042E0081CA95 /* WBWelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
