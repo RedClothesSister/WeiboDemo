@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class WBWelcomeView: UIView {
     
@@ -24,10 +25,13 @@ class WBWelcomeView: UIView {
         setupLayout()
         // 设置空间的动画
         setupAnimate()
+        
+        // 设置用户头像
+        setupUserAvata()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
 }
@@ -72,9 +76,21 @@ extension WBWelcomeView {
             self.iconImage.transform = CGAffineTransform(translationX: 0, y: -(UIScreen.main.bounds.height - 360))
         }, completion: nil)
         
-        UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: 1, delay: 0.3, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.tipLabel.transform = CGAffineTransform(translationX: 0, y: -(UIScreen.main.bounds.height - 355))
             self.tipLabel.alpha = 1
-        }, completion: nil)
+        }) { (_) in
+            self.removeFromSuperview()
+        }
+    }
+    
+    private func setupUserAvata() {
+        guard let urlString = WBNetworkManager.shared.userAccount.avatar_large,
+              let url = URL(string: urlString) else {
+            return
+        }
+        
+        // 设置头像 -- placeholderImage 如果网络图像没有下载完成，就显示之前显示占位图
+        iconImage.sd_setImage(with: url, placeholderImage: UIImage(named: "ad_background"))
     }
 }
