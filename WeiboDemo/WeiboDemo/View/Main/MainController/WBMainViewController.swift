@@ -112,7 +112,6 @@ extension WBMainViewController {
         
         // 获取沙盒json路径
         let jsonPath = WBGetFilePath.getFilePath(fileName: fileName)
-        print(jsonPath)
         // 加载data
         var data = NSData(contentsOfFile: jsonPath)
         
@@ -243,10 +242,10 @@ extension WBMainViewController {
         // 1.检查版本是否更新
         
         // 2.如果更新，显示新特性，否则显示欢迎页面
-        let v = isNewVersion ? WBNewFeatureView() : WBWelcomeView()
+        let v = isNewVersion ? WBWelcomeView() : WBNewFeatureView()
         
         // 3.添加视图
-        v.frame = view.bounds
+        v.frame = UIScreen.main.bounds
         view.addSubview(v)
     }
     
@@ -264,19 +263,32 @@ extension WBMainViewController {
         // 1.取当前的版本号
         let dict = Bundle.main.infoDictionary
         //print(dict)
-        let currentVerison = dict?["CFBundleShortVersionString"] as? String ?? ""
-        print(currentVerison)
+        let currentVersion = dict?["CFBundleShortVersionString"] as? String ?? ""
+        //print(currentVersion)
         
         // 2.取保存在 Document 目录中的之前的版本号
-        let path = "version"
-        WBGetFilePath.writeFileToDisk(fileName: path)
+        let fileName = "version"
         
-        let sandBoxVersion = (try? String(contentsOfFile: path)) ?? ""
-        print(sandBoxVersion)
+        let jsonPath = WBGetFilePath.getFilePath(fileName: fileName)
+        //print(jsonPath)
+        
+        guard let data = NSData(contentsOfFile: jsonPath),
+            let sandBoxVersionDict = try? JSONSerialization.jsonObject(with: data as Data, options: []) as? [String: AnyObject] else {
+                return false
+        }
+        
+        let sandBoxVersion = sandBoxVersionDict!["version"] as? String ?? ""
+        //print(sandBoxVersion)
+        
         // 3.将之前的版本号存储
-        try? (currentVerison as NSString).write(toFile: path, atomically: true, encoding: String.Encoding.utf8.rawValue)
+        let versionDict = ["version": "\(currentVersion)"]
+        WBGetFilePath.writeFileToDisk(dict: versionDict as [String: AnyObject], fileName: fileName)
         
         // 4.判断两和版本是否相同
-        return currentVerison != sandBoxVersion
+        if currentVersion == sandBoxVersion {
+            return true
+        } else {
+            return false
+        }
     }
 }
