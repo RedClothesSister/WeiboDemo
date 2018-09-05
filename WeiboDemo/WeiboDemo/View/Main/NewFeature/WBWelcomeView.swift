@@ -47,6 +47,7 @@ extension WBWelcomeView {
         
         // 设置提示标题
         tipLabel.text = "欢迎回来"
+        tipLabel.alpha = 0
         tipLabel.font = UIFont.boldSystemFont(ofSize: 17)
         insertSubview(tipLabel, aboveSubview: backgroundImage)
     }
@@ -73,6 +74,7 @@ extension WBWelcomeView {
         
         UIView.animate(withDuration: 1, delay: 0.2, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
             self.tipLabel.transform = CGAffineTransform(translationX: 0, y: -(UIScreen.main.bounds.height - 355))
+            self.tipLabel.alpha = 1
         }, completion: nil)
     }
 }
