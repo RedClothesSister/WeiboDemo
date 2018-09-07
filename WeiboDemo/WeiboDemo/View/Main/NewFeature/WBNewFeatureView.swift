@@ -56,7 +56,7 @@ extension WBNewFeatureView {
         
         pageControl.currentPageIndicatorTintColor = UIColor.orange
         pageControl.pageIndicatorTintColor = UIColor.white
-        
+        pageControl.isUserInteractionEnabled = false
         pageControl.numberOfPages = 3
         pageControl.addTarget(self, action: #selector(scrollViewDidEndDecelerating), for: .valueChanged)
     }

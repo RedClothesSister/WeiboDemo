@@ -331,10 +331,10 @@
 		AAD9F2DC21327B70000F2E6C /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AAD9F2FD21338FDB000F2E6C /* MainController */,
 				AA6CFDAA213E03F10081CA95 /* NewFeature */,
 				AA570F6B213913430013E87B /* OAuth */,
 				AAD9F2F221329BF0000F2E6C /* Test */,
-				AAD9F2FD21338FDB000F2E6C /* MainController */,
 				AAD9F2E521327D02000F2E6C /* WBBaseViewController.swift */,
 			);
 			path = Main;
