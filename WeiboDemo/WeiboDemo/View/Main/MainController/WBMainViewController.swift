@@ -27,9 +27,7 @@ class WBMainViewController: UITabBarController {
         delegate = self
         
         setupTimer()
-        
-        
-        
+
         // 注册通知
         NotificationCenter.default.addObserver(self, selector: #selector(userLogin), name: NSNotification.Name(rawValue: WBUserShouldLoginNotification), object: nil)
         
@@ -285,7 +283,7 @@ extension WBMainViewController {
         WBGetFilePath.writeFileToDisk(dict: versionDict as [String: AnyObject], fileName: fileName)
         
         // 4.判断两和版本是否相同
-        if currentVersion == sandBoxVersion {
+        if currentVersion != sandBoxVersion {
             return true
         } else {
             return false
